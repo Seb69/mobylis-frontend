@@ -1,12 +1,14 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
 /tmp
 /out-tsc
-
+/dist
+/dist-server
+/semantic/dist
 # dependencies
 /node_modules
+/semantic/node_modules
 
 # IDEs and editors
 /.idea
@@ -40,3 +42,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/functions/node_modules
+/public/
+
+/functions/dist/
+/functions/dist-ssr/
+functions/etc/
+/functions/lib/
