@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "8.9.1"
+install: true
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+script:
+  - npm install
+  - ng build --prod
+  - npm install firebase-tools -g
+  - firebase deploy --token "$FIREBASE_TOKEN"

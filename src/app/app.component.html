@@ -1,55 +1,60 @@
-<div class="ui stackable menu menu-font">
-  <a routerLink="/" routerLinkActive="active" class="item" id="logo-background">
-    <img class="ui medium centered image " src="/assets/logo_mobylis.png">
-  </a>
-  <a class="item ui header" routerLink="/siege" routerLinkActive="active">Sièges</a>
-  <a class="item ui header" routerLink="/table" routerLinkActive="active">Tables</a>
-  <a class="item ui header" routerLink="/accessoires" routerLinkActive="active">Accessoires</a>
-  <a class="item ui header" routerLink="/prestation" routerLinkActive="active">Prestations</a>
-  <a class="item right ui header" routerLink="/contact" routerLinkActive="active">Nous Contacter</a>
-</div>
-
-<!--<cl-image public-id="sample" class="thumbnail inline" format="jpg">-->
-<!--<cl-transformation height="150" width="150" crop="fill" ></cl-transformation>-->
-<!--</cl-image>-->
-
-
-
-<!--<div class="ui grid" style="background-color: blue">-->
-<!--<div class="sixteen wide column" style="background-color: red">-->
-<!--<cl-image public-id="car_lady_dog.jpg"-->
-<!--cloud-name="demo"-->
-<!--class="ui fluid image"-->
-<!--quality="auto"-->
-<!--fetch_format="auto"-->
-<!--width="auto"-->
-<!--dpr="auto"-->
-<!--crop="scale"-->
-<!--responsive>-->
-<!--</cl-image>-->
-<!--</div>-->
-<!--</div>-->
-
-<router-outlet></router-outlet>
-
-<div id="footer-color">
-  <div class="ui two column container grid footer-link-font">
-
-    <div class="column middle aligned " id="column-position">
-      <a routerLink="/" routerLinkActive="active">Accueil</a> <br>
-      <a routerLink="/siege" routerLinkActive="active">Sièges</a><br>
-      <a routerLink="/table" routerLinkActive="active">Tables</a><br>
-      <a routerLink="/accessoires" routerLinkActive="active">Accessoires</a><br>
-      <a routerLink="/prestation" routerLinkActive="active">Prestations</a><br>
-      <a routerLink="/contact" routerLinkActive="active">Nous Contacter</a>
+<div>
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxFlex style="background-color: red">
+      <app-image></app-image>
     </div>
-
-    <div class="column middle aligned">
-      <a routerLink="/" routerLinkActive="active">Qui sommes nous</a> <br>
-      <a routerLink="/mentionslegales" routerLinkActive="active">Mentions légales</a><br>
+    <div fxFlex>
+      <app-image></app-image>
     </div>
-
   </div>
-</div>
+<!--<img class="cld-responsive"-->
+<!--data-src="https://res.cloudinary.com/demo/image/upload/w_auto,dpr_auto,c_scale/woman.jpg"-->
+<!--src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"  />-->
 
-<div class="bottom"></div>
+<!--<div style="height: 10em;width: 10em;background-color: blue">-->
+<!--<cl-image-->
+<!--public-id="car_lady_dog.jpg"-->
+<!--cloud-name="demo"-->
+<!--quality="auto"-->
+<!--width="auto"-->
+<!--crop="scale"-->
+<!--fetch_format="auto"-->
+<!--dpr="auto">-->
+<!--</cl-image>-->
+<!--</div>-->
+
+
+<!--<app-menu></app-menu>-->
+
+
+<!--<div style="width: 10em; height: 10em;background-color: blue">-->
+<!--</div>-->
+<!--<div style="width: 10em; height: 10em;background-color: red">-->
+<!--<app-image style="width: 10em; height: 10em" [src]="'test'"></app-image>-->
+<!--</div>-->
+<!--<div>-->
+<!--</div>-->
+
+<!--<router-outlet></router-outlet>-->
+
+<!--<div id="footer-color">-->
+<!--<div class="ui two column container grid footer-link-font">-->
+
+<!--<div class="column middle aligned " id="column-position">-->
+<!--<a routerLink="/" routerLinkActive="active">Accueil</a> <br>-->
+<!--<a routerLink="/siege" routerLinkActive="active">Sièges</a><br>-->
+<!--<a routerLink="/table" routerLinkActive="active">Tables</a><br>-->
+<!--<a routerLink="/accessoires" routerLinkActive="active">Accessoires</a><br>-->
+<!--<a routerLink="/prestation" routerLinkActive="active">Prestations</a><br>-->
+<!--<a routerLink="/contact" routerLinkActive="active">Nous Contacter</a>-->
+<!--</div>-->
+
+<!--<div class="column middle aligned">-->
+<!--<a routerLink="/" routerLinkActive="active">Qui sommes nous</a> <br>-->
+<!--<a routerLink="/mentionslegales" routerLinkActive="active">Mentions légales</a><br>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="bottom"></div>-->

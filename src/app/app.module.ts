@@ -5,15 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import {StyleModule} from './style.module';
+import {MenuComponent} from './menu/menu.component';
+import {ImageModule} from './shared/image.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
+    StyleModule,
+    ImageModule,
     RouterModule
   ],
   providers: [],

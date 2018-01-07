@@ -1,11 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
-$primary-font-family: Reem Kufi;
-
-@mixin primary-font() {
-  font-family: $primary-font-family;
-}
-@mixin primary-font-size($size) {
-  font-family: $primary-font-family;
-  font-size: $size;
+body{
+  margin: 0;
 }
