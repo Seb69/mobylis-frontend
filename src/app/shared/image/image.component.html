@@ -1,15 +1,7 @@
 <img
-  srcset="https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_64,c_pad,b_black/{{image}} 64w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_128,c_pad,b_black/{{image}} 128w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_256,c_pad,b_black/{{image}} 256w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_512,c_pad,b_black/{{image}} 512w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_768,c_pad,b_black/{{image}} 768w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_1024,c_pad,b_black/{{image}} 1024w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_1280,c_pad,b_black/{{image}} 1280w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_1536,c_pad,b_black/{{image}} 1526w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_1792,c_pad,b_black/{{image}} 1792w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_1792,c_pad,b_black/{{image}} 1792w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_2048,c_pad,b_black/{{image}} 2048w,
-  https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_2560,c_pad,b_black/{{image}} 2560w"
-  sizes="(min-width: 600px) 50vw, 100vw"
+  class="align-image"
+  srcset="{{sourceSet}}"
+  sizes="
+  (min-width: {{maxSize}}) {{largeSize}},
+  100vw"
   src="https://res.cloudinary.com/eeeps/image/upload/f_auto,q_auto,w_512/{{image}}">

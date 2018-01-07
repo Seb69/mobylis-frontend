@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {UrlGeneratorService} from './url-generator.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {ImageUrlGeneratorService} from './image-url-generator.service';
 
 @Component({
   selector: 'app-image',
@@ -8,14 +8,24 @@ import {UrlGeneratorService} from './url-generator.service';
 })
 export class ImageComponent implements OnInit {
 
-  public image: string;
+  @Input() image: string;
+  @Input() maxSize? = '600px';
+  @Input() largeSize? = '50vw';
+  private _sourceSet: string;
 
-  constructor(private urlGeneratorService: UrlGeneratorService) {
-    this.image = 'on_the_phone.jpg';
+  constructor(private imageUrlGeneratorService: ImageUrlGeneratorService) {
   }
 
   ngOnInit() {
+    this._sourceSet = this.imageUrlGeneratorService.generateUrl(this.image);
+  }
 
+  get sourceSet(): string {
+    return this._sourceSet;
+  }
+
+  set sourceSet(value: string) {
+    this._sourceSet = value;
   }
 
 }
