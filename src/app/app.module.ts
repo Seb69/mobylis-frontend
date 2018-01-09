@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import {StyleModule} from './style.module';
 import {MenuComponent} from './menu/menu.component';
 import {ImageModule} from './shared/image.module';
-
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import {ImageModule} from './shared/image.module';
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
+    LazyLoadImageModule,
     StyleModule,
     ImageModule,
     RouterModule

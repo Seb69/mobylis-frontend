@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class ImageUrlGeneratorService {
@@ -9,26 +9,59 @@ export class ImageUrlGeneratorService {
   private _projectId = 'dqismn81g';
   private _scheme = 'https';
   private _cloudinaryHostName = 'res.cloudinary.com';
+  private _formatAuto = 'f_auto';
+  private _qualityAuto = 'q_auto';
 
-  constructor() { }
-  generateUrl(image: string): string {
-
-     return this.supportedWidth
-       .map(width => {
-     const transformations = 'f_auto,q_auto,w_' + width;
-       return this.scheme + '://' + this.cloudinaryHostName + '/' + this.projectId + '/image/upload/' + transformations + '/' + image + ' ' + width + 'w';})
-       .join((','));
+  constructor() {
   }
+
+  generateUrl(image: string, borderWidth?: string, borderColor?: string): string {
+
+    return this.supportedWidth
+      .map(width => {
+
+        let transformations: string = this.formatAuto + ',' + this.qualityAuto + ',w_' + width;
+
+        if (borderWidth != null || borderColor != null) {
+          transformations = transformations + this.borderTransformation(borderWidth, borderColor);
+        }
+
+        return this.scheme + '://' + this.cloudinaryHostName + '/' + this.projectId + '/image/upload/' + transformations + '/' + image + ' ' + width + 'w';
+      })
+      .join((','));
+  }
+
+  generateSourceUrl(image: string): string {
+
+    const transformations = this.formatAuto + ',' + this.qualityAuto + ',w_512';
+
+    return this.scheme + '://' + this.cloudinaryHostName + '/' + this.projectId + '/image/upload/' + transformations + '/' + image;
+  }
+
+
+  generateSizes(smallSize: string, middleSize: string, largeSize: string): string {
+
+    const transformations = this.formatAuto + ',' + this.qualityAuto + ',w_512';
+
+    return 'test';
+  }
+
+  borderTransformation(borderWidth: string, borderColor: string): string {
+    if (borderWidth != null || borderColor != null) {
+      if (borderColor == null) {
+        return ',bo_' + borderWidth + '_solid_white';
+      } else if (borderWidth == null) {
+        return ',bo_10px_solid_' + borderColor;
+      } else {
+        return ',bo_' + borderWidth + '_solid_' + borderColor;
+      }
+    } else {
+      return null;
+    }
+  }
+
   get scheme(): string {
     return this._scheme;
-  }
-
-  set scheme(value: string) {
-    this._scheme = value;
-  }
-
-  set projectId(value: string) {
-    this._projectId = value;
   }
 
   get projectId(): string {
@@ -38,8 +71,12 @@ export class ImageUrlGeneratorService {
   get cloudinaryHostName(): string {
     return this._cloudinaryHostName;
   }
-
-  set cloudinaryHostName(value: string) {
-    this._cloudinaryHostName = value;
+  get qualityAuto(): string {
+    return this._qualityAuto;
   }
+
+  get formatAuto(): string {
+    return this._formatAuto;
+  }
+
 }

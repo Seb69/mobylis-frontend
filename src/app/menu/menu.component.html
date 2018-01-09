@@ -1,8 +1,31 @@
 <div class="super-header"></div>
-<div class="menu">
-  <a routerLink="/" routerLinkActive="active" >
-    <app-image image="logo_mobylis_jynibn.jpg" largeSize="17em" ></app-image>
-  </a>
+<div fxLayout="row" fxLayout.xs="column">
+  <div fxFlex >
+    <app-image image="logo_mobylis_ummmtg.jpg"  [lazyLoad]="false"></app-image>
+  </div>
+  <!--<div fxFlex  fxHide.xs>-->
+    <!--<app-image image="logo_mobylis_ummmtg.jpg" largeSize="20em" [lazyLoad]="false"></app-image>-->
+  <!--</div>-->
+  <div fxFlex >
+    <mat-card>
+      <input class="search-input" placeholder="Rechercher">
+    </mat-card>
+  </div>
 </div>
+<!--<div class="menu" style="vertical-align: middle">-->
+  <!--<a routerLink="/" routerLinkActive="active">-->
 
-<div class="sub-menu" ></div>
+  <!--</a>-->
+  <!--<div class="search-bar">-->
+    <!--<mat-card style="background-color: red">-->
+      <!--<input class="search-input" placeholder="Rechercher">-->
+    <!--</mat-card>-->
+    <!--<div style="">-->
+    <!--</div>-->
+    <!--<i class="fas fa-search"></i>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="sub-menu">
+
+</div>

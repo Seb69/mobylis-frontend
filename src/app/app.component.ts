@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, NgZone} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
   formButtonXs = true;
+
 }
