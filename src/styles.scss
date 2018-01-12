@@ -9,3 +9,20 @@ body {
 *:focus {
   outline: none;
 }
+
+.center {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+.center-h {
+  display: flex;
+  justify-content: center; /* align horizontal */
+}
+
+.center-v {
+  display: flex;
+  align-items: center; /* align vertical */
+}
+

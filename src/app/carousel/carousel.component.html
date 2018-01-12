@@ -1,0 +1,9 @@
+<div style="width: 100%; height: 25vh;">
+  <swiper class="swiper-container" [config]="config">
+    <div *ngFor="let slide of slides" class="swiper-slide">
+      <div style="width: 100%; height: 100%; text-align: center;">
+        {{slide}}
+      </div>
+    </div>
+  </swiper>
+</div>

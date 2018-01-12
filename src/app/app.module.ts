@@ -9,6 +9,7 @@ import {StyleModule} from './style.module';
 import {MenuComponent} from './menu/menu.component';
 import {ImageModule} from './shared/image.module';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import {CarouselModule} from './carousel/carousel.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     LazyLoadImageModule,
+    CarouselModule,
     StyleModule,
     ImageModule,
     RouterModule
