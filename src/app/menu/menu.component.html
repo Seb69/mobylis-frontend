@@ -1,21 +1,18 @@
 <div class="super-header"></div>
 <div fxLayout="row" fxLayout.xs="column">
-  <div fxFlex>
-    <div style="height: 100%" class="center">
-      <app-image image="logo_mobylis_ummmtg.jpg" [lazyLoad]="false"></app-image>
-    </div>
+  <div fxFlex.gt-sm="25" fxFlex="50" >
+    <!--<mat-card>-->
+      <app-image image="logo_mobylis_ummmtg.jpg" [lazyLoad]="false" ratio="2269:367"></app-image>
+    <!--</mat-card>-->
   </div>
-  <!--<div fxFlex  fxHide.xs>-->
-  <!--<app-image image="logo_mobylis_ummmtg.jpg" largeSize="20em" [lazyLoad]="false"></app-image>-->
-  <!--</div>-->
+  <!--<div fxFlexAlign="center center">-->
   <div fxFlex>
-    <div  class="center" style="height: 100%; width: 100%">
-      <mat-card style="width: 100%">
-        <input class="search-input" placeholder="Rechercher" width="100%" >
+      <mat-card>
+        <input class="search-input" placeholder="Rechercher">
       </mat-card>
-    </div>
   </div>
 </div>
+
 <!--<div class="menu" style="vertical-align: middle">-->
 <!--<a routerLink="/" routerLinkActive="active">-->
 

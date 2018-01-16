@@ -1,0 +1,29 @@
+<div
+  style="background-color: blue"
+  class="sixteen-nine"
+  [ngStyle]="{'padding-bottom': calculatedRatio}"
+>
+  <!--[style.paddingTop]="calculatedRatio"-->
+  <img
+  *ngIf="lazyLoad"
+  [useSrcset]="true"
+  [lazyLoad]="sourceSet"
+  [offset]="250"
+  sizes="
+  (max-width: {{smallBreakpoint}}) {{xsmallSize}},
+  (max-width: {{mediumBreakpoint}}) {{smallSize}},
+  (max-width: {{largeBreakpoint}}) {{mediumSize}},
+  (max-width: {{xlargeBreakpoint}}) {{largeSize}},
+  {{xlargeSize}}"
+  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+  <img
+    *ngIf="!lazyLoad"
+    [srcset]="sourceSet"
+    sizes="
+  (max-width: {{smallBreakpoint}}) {{xsmallSize}},
+  (max-width: {{mediumBreakpoint}}) {{smallSize}},
+  (max-width: {{largeBreakpoint}}) {{mediumSize}},
+  (max-width: {{xlargeBreakpoint}}) {{largeSize}},
+  {{xlargeSize}}"
+    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+</div>

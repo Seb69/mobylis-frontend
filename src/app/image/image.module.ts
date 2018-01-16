@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImageComponent } from './image/image.component';
-import {ImageUrlGeneratorService} from './image/image-url-generator.service';
+import { ImageComponent } from './image.component';
+import {ImageService} from './image.service';
 import {LazyLoadImageModule} from 'ng-lazyload-image';
 
 @NgModule({
@@ -10,7 +10,7 @@ import {LazyLoadImageModule} from 'ng-lazyload-image';
     LazyLoadImageModule
   ],
   exports: [CommonModule, ImageComponent],
-  providers: [ImageUrlGeneratorService],
+  providers: [ImageService],
   declarations: [ImageComponent]
 })
 export class ImageModule { }

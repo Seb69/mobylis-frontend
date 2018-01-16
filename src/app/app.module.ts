@@ -7,9 +7,8 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import {StyleModule} from './style.module';
 import {MenuComponent} from './menu/menu.component';
-import {ImageModule} from './shared/image.module';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
-import {CarouselModule} from './carousel/carousel.module';
+import {ImageModule} from './image/image.module';
+import {ResponsiveImageModule} from './responsive-image/responsive-image.module';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,8 @@ import {CarouselModule} from './carousel/carousel.module';
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    LazyLoadImageModule,
-    CarouselModule,
+    ResponsiveImageModule,
+    // CarouselModule,
     StyleModule,
     ImageModule,
     RouterModule

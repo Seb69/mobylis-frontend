@@ -1,0 +1,24 @@
+// Calcul the ratio
+@mixin aspect-ratio() {
+  position: relative;
+  //padding-bottom: 16%;
+
+  > img {
+    position: absolute;
+
+    // Vertical and horizontal align
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+  }
+}
+
+.sixteen-nine {
+  @include aspect-ratio();
+}
+
+//.center {
+//  display: flex;
+//  //flex-direction: column;
+//  //justify-content: center; /* align horizontal */
+//  align-items: center; /* align vertical */
+//}
