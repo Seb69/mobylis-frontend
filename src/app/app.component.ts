@@ -1,5 +1,4 @@
 import {Component, ElementRef, NgZone} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',

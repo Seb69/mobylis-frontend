@@ -1,14 +1,13 @@
 <div
   style="background-color: blue"
-  class="sixteen-nine"
-  [ngStyle]="{'padding-bottom': calculatedRatio}"
+  class="aspect-ratio"
+  [style.paddingBottom]="calculatedRatio"
 >
-  <!--[style.paddingTop]="calculatedRatio"-->
   <img
   *ngIf="lazyLoad"
   [useSrcset]="true"
   [lazyLoad]="sourceSet"
-  [offset]="250"
+  [offset]="offset"
   sizes="
   (max-width: {{smallBreakpoint}}) {{xsmallSize}},
   (max-width: {{mediumBreakpoint}}) {{smallSize}},

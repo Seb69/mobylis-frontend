@@ -1,53 +1,22 @@
-<!--<div class="image-wrapper">-->
-<!--<img class="image" src="http://res.cloudinary.com/dqismn81g/image/upload/v1515950396/436810_exn0ex.jpg"/>-->
-<!--</div>-->
-<!--<p>Hit the button!</p>-->
-<!--<div class="container">-->
-<!--<div class="sixteen-nine">-->
-<!--<img class="image" src="http://res.cloudinary.com/dqismn81g/image/upload/ar_16:9,c_crop/436810_exn0ex.jpg"/>-->
-<!--<img class="image" src="http://res.cloudinary.com/dqismn81g/image/upload/436810_exn0ex.jpg"/>-->
-<!--</div>-->
-<!--<div class="container">-->
-<!--<h1>Maintain Aspect Ratio Mixin</h1>-->
-<!--<div class="box sixteen-nine">-->
-<!--<div class="content">-->
-<!--<img src="https://res.cloudinary.com/dqismn81g/image/upload/f_auto,q_auto,ar_16:9,c_pad,b_white/logo_mobylis_ummmtg.jpg" sizes="100vw"/>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
+<app-menu></app-menu>
 
-<!--</div>-->
-<!--<app-menu></app-menu>-->
-<div class="super-header"></div>
+<app-carousel></app-carousel>
+
 <div fxLayout="row"
      fxLayoutAlign.gt-xs="center center"
      fxLayout.xs="column">
-  <div fxFlex fxFlex.gt-sm="33" >
-    <app-image image="logo_mobylis_ummmtg.jpg" [lazyLoad]="false" ratio="2269:367"></app-image>
-  </div>
   <div fxFlex >
-    <mat-card>
-      <input class="search-input" placeholder="Rechercher">
-    </mat-card>
+    <responsive-image image="Signature_xt56sy.pdf" ratio="841:595"></responsive-image>
+  </div>
+<div style="height: 1em"></div>
+  <!--<div fxFlex>-->
+    <!--<responsive-image image="sample.jpg" ratio="864:576"></responsive-image>-->
+  <!--</div>-->
+<div style="height: 1em"></div>
+  <div fxFlex>
+    <responsive-image image="Photo_kbyuqw.jpg" ratio="1184:1765"></responsive-image>
   </div>
 </div>
-<!--<app-carousel></app-carousel>-->
-<!--<div>-->
-<!--<div fxLayout="row" fxLayout.xs="column">-->
-<!--<div fxFlex style="background-color: red">-->
-<!--<app-image image="sample.jpg"></app-image>-->
-<!--</div>-->
-<!--<div fxFlex>-->
-<!--<app-image image="sample.jpg"></app-image>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<app-image image="Signature_xt56sy.pdf" ratio="1:1"></app-image>
-<div style="height: 1em"></div>
-<app-image image="sample.jpg" ratio="864:576"></app-image>
-<div style="height: 1em"></div>
-<app-image image="Photo_kbyuqw.jpg" ratio="1:2"></app-image>
 
 <!--<app-image image="Signature_xt56sy.pdf" largeSize="100vw" [lazyLoad]="true"></app-image>-->
 <!--<app-image image="sample.jpg" largeSize="100vw" [lazyLoad]="true"></app-image>-->

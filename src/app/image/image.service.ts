@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {SizeSet} from './size-set';
 
 @Injectable()
 export class ImageService {
 
+  // Supported image width to download
   public supportedWidth: number[] = [64, 128, 192, 256, 320, 448, 512, 640, 768, 896, 1024, 1280, 1526, 2048, 2560, 4608, 5632];
 
   // Global parameters
@@ -24,10 +24,9 @@ export class ImageService {
       .map(width => {
 
         const transformations: string = this.formatAuto + ',' + this.qualityAuto + ',w_' + width;
-
         return this.scheme + '://' + this.cloudinaryHostName + '/' + this.projectId + '/image/upload/' + transformations + '/' + image + ' ' + width + 'w';
       })
-      .join((','));
+      .join(',');
   }
 
   calculateAspectRatio(ratio: string): string {
@@ -38,30 +37,6 @@ export class ImageService {
 
     return String((height / width) * 100).concat('%');
   }
-
-  windowsWidth(sizeSet: SizeSet): string {
-    const windowWidth: number = window.innerWidth;
-    if (windowWidth < 600) {
-       return sizeSet.xsmall;
-    } else if (windowWidth < 960) {
-      return sizeSet.small;
-    } else if (windowWidth < 1280) {
-      return sizeSet.medium;
-    } else if (windowWidth < 1920) {
-      return sizeSet.large;
-    } else {
-      return sizeSet.xlarge;
-    }
-
-  }
-
-  generateSourceUrl(image: string): string {
-
-    const transformations = this.formatAuto + ',' + this.qualityAuto + ',w_512';
-
-    return this.scheme + '://' + this.cloudinaryHostName + '/' + this.projectId + '/image/upload/' + transformations + '/' + image;
-  }
-
 
   get scheme(): string {
     return this._scheme;

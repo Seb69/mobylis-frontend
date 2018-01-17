@@ -1,7 +1,6 @@
 // Calcul the ratio
 @mixin aspect-ratio() {
   position: relative;
-  //padding-bottom: 16%;
 
   > img {
     position: absolute;
@@ -12,13 +11,6 @@
   }
 }
 
-.sixteen-nine {
+.aspect-ratio {
   @include aspect-ratio();
 }
-
-//.center {
-//  display: flex;
-//  //flex-direction: column;
-//  //justify-content: center; /* align horizontal */
-//  align-items: center; /* align vertical */
-//}
