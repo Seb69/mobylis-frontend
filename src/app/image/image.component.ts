@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {ImageService} from './image.service';
 
 @Component({
-  selector: 'responsive-image',
+  selector: 'app-image',
   templateUrl: './image.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./image.component.scss']
@@ -24,7 +24,7 @@ export class ImageComponent implements OnInit {
 
   // Lazy load
   @Input() lazyLoad: Boolean = true;
-  @Input() offset = 200;
+  @Input() offset = 0;
 
   smallBreakpoint = '599px';
   mediumBreakpoint = '959px';
@@ -45,7 +45,6 @@ export class ImageComponent implements OnInit {
   }
 
   get sourceSet(): string {
-    console.log('IMAGE COMPONENT : GET SOURCE SET' + this._sourceSet);
     return this._sourceSet;
   }
 

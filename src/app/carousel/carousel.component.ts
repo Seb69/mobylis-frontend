@@ -6,30 +6,31 @@ import {SwiperConfigInterface} from 'ngx-swiper-wrapper';
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit {
+export class CarouselComponent {
 
   public slides = [
-    'First slide',
-    'Second slide',
-    'Third slide',
-    'Fourth slide',
-    'Fifth slide',
-    'Sixth slide'
+    'Signature_xt56sy.pdf',
+    'Photo_kbyuqw.jpg',
+    'sample.jpg'
   ];
 
   public config: SwiperConfigInterface = {
     direction: 'horizontal',
     slidesPerView: 1,
-    keyboard: true,
-    mousewheel: true,
+    keyboard: false,
+    mousewheel: false,
     scrollbar: false,
     navigation: true,
-    pagination: false
+    pagination: false,
+    observer: true,
+    preloadImages: false,
+    // Enable lazy loading
+    lazy: {
+      loadPrevNext: false,
+      loadPrevNextAmount: 0
+    },
   };
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
