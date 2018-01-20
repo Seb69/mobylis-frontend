@@ -5,7 +5,6 @@ import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppShellComponent } from './app-shell/app-shell.component';
-import {SwiperModule} from 'ngx-swiper-wrapper';
 
 const routes: Routes = [ { path: 'app-shell-path', component: AppShellComponent }];
 
@@ -13,7 +12,6 @@ const routes: Routes = [ { path: 'app-shell-path', component: AppShellComponent 
   imports: [
     AppModule,
     ServerModule,
-    SwiperModule,
     RouterModule.forRoot(routes),
   ],
   bootstrap: [AppComponent],

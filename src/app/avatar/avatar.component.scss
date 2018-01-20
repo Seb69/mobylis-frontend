@@ -1,44 +1,23 @@
-////.swipe-box {
-////  display: block;
-////  width: 100%;
-////  float: left;
-////  margin: 0;
-////}
-////
-////.visible {
-////  display: block;
-////}
-////
-////.hidden {
-////  display: none;
-////}
-//
-//
-//.demo-one {width:20px;height:200px;background-color: slateblue;color: #fff;}
-//
-//.demo-one:hover {cursor:pointer}
+
 .has-slider {
   overflow: hidden;
   width: 100%;
-
-}
-.has-slider::after {
-  animation: flash 1s infinite;
-  color: red;
-  left: 50%;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  transform: translate( -50%, -50% );
 }
 
 .slider {
+  // Carousel with (number of slide * 100%)
   width: 300%;
-  display: flex;
-  //transition: transform 400ms cubic-bezier( 0.5, 0, 0.5, 1 );
-
+  // Remove small space between image
+  //display: flex;
+  //float: left;
+  //position: relative;
 }
 
-img {
+.animation {
+  // Animate
+  transition: transform 300ms cubic-bezier( 0.5, 0, 0.5, 1 );
+}
+
+app-image {
   float: left;
 }

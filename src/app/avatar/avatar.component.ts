@@ -6,44 +6,39 @@ import {Component} from '@angular/core';
   templateUrl: './avatar.component.html',
 })
 export class DemoOne {
-  get transformPercentage() {
-    console.log('CHANGE DETECTION');
-    return this._transformPercentage;
-  }
 
-  set transformPercentage(value) {
-    this._transformPercentage = value;
-  }
-  public x = 0;
-  public y = 0;
   public percentage;
+  public deltaX;
   private _transformPercentage;
+  public animation = false;
   public viewPercentage;
   public slideCount = 3;
   public activeSlide = 0;
   public sensitivity = 25;
 
-  private startX = 0;
-  private startY = 0;
 
   onPanStart(event: any): void {
-    this.startX = this.x;
-    this.startY = this.y;
+    // Stop animation
+    this.animation = false;
   }
 
   onPanEnd(event: any): void {
 
+    // Start animation
+    this.animation = true;
+
+    // this.viewPercentage = this.percentage * this.slideCount;
     this.viewPercentage = this.percentage * this.slideCount;
     console.log(event);
 
-    // Velicity Check : if the user make a quick move
 
-    //
+    // Velicity Check : if the user make a quick move
     if (event.overallVelocityX > 1) {
       console.log('Velocity hit : left');
-
+      this.moveLeft();
     } else if (event.overallVelocityX < -1) {
       console.log('Velocity hit : right');
+      this.moveRight();
     } else {
 
       if (Math.sign(this.viewPercentage) === 1) {
@@ -68,16 +63,16 @@ export class DemoOne {
   }
 
   moveCenter() {
-    this._transformPercentage = - (this.activeSlide / this.slideCount) * 100;
+    this.transformPercentage = - (this.activeSlide / this.slideCount) * 100;
   }
 
   moveRight() {
     // Last slide
     if (this.activeSlide === this.slideCount - 1 ) {
-      this._transformPercentage = - (this.activeSlide / this.slideCount) * 100;
+      this.transformPercentage = - (this.activeSlide / this.slideCount) * 100;
     } else { // Not the last slide
       this.activeSlide = this.activeSlide + 1;
-      this._transformPercentage = - (this.activeSlide / this.slideCount) * 100;
+      this.transformPercentage = - (this.activeSlide / this.slideCount) * 100;
     }
   }
 
@@ -85,23 +80,31 @@ export class DemoOne {
   moveLeft() {
     // First slide
     if (this.activeSlide === 0 ) {
-      this._transformPercentage = 0;
+      this.transformPercentage = 0;
     } else { // Not the first slide
       this.activeSlide = this.activeSlide - 1;
-      this._transformPercentage = - (this.activeSlide / this.slideCount) * 100;
+      this.transformPercentage = - (this.activeSlide / this.slideCount) * 100;
     }
   }
 
 
 
-  onPan(event: any): void {
+  onPanMove(event: any): void {
 
-    this.percentage = 100 / this.slideCount * event.deltaX / window.innerWidth;
-    this._transformPercentage = ((100 * event.deltaX / (this.slideCount * window.innerWidth)) - (100 / this.slideCount * this.activeSlide));
+    this.deltaX = event.deltaX;
 
-    // var transformPercentage = percentage - 100 / slideCount * activeSlide;
+    // this.percentage = 100 / this.slideCount * event.deltaX / window.innerWidth;
+    // this._transformPercentage = ((100 * event.deltaX / (this.slideCount * window.innerWidth)) - ((100 / this.slideCount) * this.activeSlide));
   }
 
+  get transformPercentage() {
+    console.log('CHANGE DETECTION');
+    return this._transformPercentage;
+  }
+
+  set transformPercentage(value) {
+    this._transformPercentage = value;
+  }
 
 }
 

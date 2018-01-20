@@ -1,48 +1,61 @@
-<!--&lt;!&ndash; app/app.component.html &ndash;&gt;-->
-<!--<div>-->
-<!--<h4>Swipe Avatars with HammerJS</h4>-->
-<!--&lt;!&ndash; loop each avatar in our avatar list &ndash;&gt;-->
-<!--<div class="swipe-box" *ngFor="let avatar of avatars; let idx=index" (swipeleft)="swipe(idx, $event.type)" (swiperight)="swipe(idx, $event.type)" (panUp)="panUp($event.type)" [class.visible]="avatar.visible" [class.hidden]="!avatar.visible">-->
-<!--<div>-->
-<!--<img [src]="avatar.image" [alt]="avatar.name">-->
-<!--</div>-->
-<!--<div>-->
-<!--<a class="header">{{avatar.name}}</a>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<div class="location">({{x}}, {{y}})</div>
-<div
-  style=" width: 100%; background-color: blue;overflow: hidden" class="has-slider">
-  <div
-    class="slider"
-    [style.transform]="'translateX('+ transformPercentage +'%)'"
+<div fxLayout="row" class="has-slider" style="background-color: red; height: auto">
+  <div fxFlex class="slider" style="background-color: yellow"
+       [style.transform]="'translateX('+ deltaX +'px)'"
+       [ngClass]=" animation ? 'animation': ''"
        (panstart)="onPanStart($event)"
        (panend)="onPanEnd($event)"
-       (panmove)="onPan($event)"
-       >
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/40288/65d721_4dfa47a05152487fb3bc45ca2ec8fd1e.png"
-         width="1000px">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/40288/tumblr_njkn6kp0kE1qgsw73o1_500.png"
-         width="1000px">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/40288/65d721_761db9a0c113407f924a824ed173ed26.png"
-         width="1000px">
+       (panmove)="onPanMove($event)">
+
+    <app-image
+      image="logo_mobylis_ummmtg.jpg"
+      [lazyLoad]="false"
+      [ratio]="2269 +':367'"></app-image>
   </div>
 </div>
 
-<div class="has-slider">
-  <div class="slider">
-    <div class="slider-panel">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/40288/65d721_4dfa47a05152487fb3bc45ca2ec8fd1e.png"
-           width="1000px"  style="margin: 0;padding: 0;background-color: red;width: 1000px">
-    </div>
-    <div class="slider-panel">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/40288/65d721_4dfa47a05152487fb3bc45ca2ec8fd1e.png"
-           width="1000px"  style="margin: 0;padding: 0;background-color: red;width: 1000px">
-    </div>
-    <div class="slider-panel">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/40288/65d721_4dfa47a05152487fb3bc45ca2ec8fd1e.png"
-           width="1000px"  style="margin: 0;padding: 0;background-color: red;width: 1000px">
-    </div>
-  </div>
-</div>
+
+<!--<div fxFlex-->
+     <!--style="background-color: blue" class="has-slider">-->
+  <!--&lt;!&ndash;[style.transform]="'translateX('+ transformPercentage +'%)'"&ndash;&gt;-->
+  <!--<div-->
+    <!--class="slider"-->
+    <!--style="background-color: red;"-->
+    <!--[style.transform]="'translateX('+ deltaX +'px)'"-->
+    <!--[ngClass]=" animation ? 'animation': ''"-->
+    <!--(panstart)="onPanStart($event)"-->
+    <!--(panend)="onPanEnd($event)"-->
+    <!--(panmove)="onPanMove($event)"-->
+  <!--&gt;-->
+
+    <!--<app-image style="background-color: red"-->
+               <!--image="logo_mobylis_ummmtg.jpg"-->
+               <!--[lazyLoad]="false"-->
+               <!--ratio="2269:367"></app-image>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<!--<div fxLayout="row"-->
+<!--fxLayoutAlign.gt-xs="center center"-->
+<!--fxLayout.xs="column">-->
+<!--<div fxFlex >-->
+<!--&lt;!&ndash;<app-image image="Signature_xt56sy.pdf" ratio="841:595"></app-image>&ndash;&gt;-->
+<!--</div>-->
+<!--<div style="height: 1em"></div>-->
+<!--&lt;!&ndash;<div fxFlex>&ndash;&gt;-->
+<!--&lt;!&ndash;<responsive-image image="sample.jpg" ratio="864:576"></responsive-image>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<div style="height: 1em"></div>-->
+<!--<div fxFlex>-->
+<!--<app-image image="Photo_kbyuqw.jpg" ratio="1184:1765"></app-image>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<app-image-->
+<!--image="logo_mobylis_ummmtg.jpg"-->
+<!--[lazyLoad]="false"-->
+<!--ratio="2269:367"></app-image>-->
+<!--<app-image-->
+<!--image="logo_mobylis_ummmtg.jpg"-->
+<!--[lazyLoad]="false"-->
+<!--ratio="2269:367"></app-image>-->
