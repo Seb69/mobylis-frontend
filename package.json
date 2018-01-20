@@ -26,6 +26,8 @@
     "@angular/platform-server": "^5.0.0",
     "@angular/router": "^5.0.0",
     "core-js": "^2.4.1",
+    "hammer-slider": "^0.1.11",
+    "hammer-timejs": "^1.1.0",
     "ng-lazyload-image": "3.4.2",
     "ngx-swiper-wrapper": "^5.2.1",
     "rxjs": "^5.5.2",

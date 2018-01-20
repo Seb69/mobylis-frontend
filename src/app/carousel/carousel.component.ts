@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {SwiperConfigInterface} from 'ngx-swiper-wrapper';
+import {isBrowser} from '@angular/flex-layout';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent {
+export class CarouselComponent implements OnInit {
+
+  isBrowserVar: boolean;
 
   public slides = [
     'Signature_xt56sy.pdf',
@@ -31,6 +34,10 @@ export class CarouselComponent {
     },
   };
 
-  constructor() { }
+  constructor() {}
+
+  ngOnInit(): void {
+  console.log(isBrowser.toString());
+  }
 
 }
