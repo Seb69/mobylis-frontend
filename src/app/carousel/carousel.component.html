@@ -1,10 +1,10 @@
 <div
-  [style.paddingTop]="calculatedRatio" style="background-color: blue;user-select: none;-webkit-user-drag: none;touch-action: none;" class="padding-container">
-  <div
-    class="carousel-container"
-    style="background-color: red">
+  [style.paddingTop]="calculatedRatio"  class="padding-container">
+  <div class="carousel-container" >
 
-    <div [style.width]="slideCount * 100 + '%'"
+    <div
+      style="background-color: red"
+      [style.width]="slideCount * 100 + '%'"
          class="pointer"
          [style.transform]="'translateX(' + deltaX + 'px)'"
          [ngClass]="animation ? 'animation': null"
@@ -12,10 +12,12 @@
          (panend)="onPanEnd($event)"
          (panmove)="onPanMove($event)">
 
+        <!--[loadImage]="loadImage"-->
       <app-responsive-image
-        style="background-color: blue"
+        *ngFor="let image of images;let i = index"
+        style="background-color: red"
         [aspectRatio]="ratio"
-        *ngFor="let image of images"
+        [index]="i"
         [image]="image"></app-responsive-image>
 
     </div>

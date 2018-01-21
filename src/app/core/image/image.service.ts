@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class ImageService {
@@ -25,32 +25,35 @@ export class ImageService {
 
   generateUrl(image: string): string {
 
-    const commonTransformation: string = this.formatAuto + ',' + this.qualityAuto;
+    const commonTransformation: string = this.formatAuto + ',' + this.qualityAuto + ',w_';
+
+    const imageUrl: string = '/' + image + ' ';
 
     return this.supportedWidth
       .map(width => {
 
-        const transformations: string = commonTransformation + ',w_' + width;
-        return this.cloudinaryUrl + transformations + '/' + image + ' ' + width + 'w';
+        const transformations: string = commonTransformation + width;
+        return this.cloudinaryUrl + transformations + imageUrl + width + 'w';
       })
       .join(',');
   }
 
   generateCarouselUrl(image: string, aspectRatio: string): string {
+    const commonTransformation: string = this.formatAuto + ',' + this.backgroundAuto + ',' + this.pad + ',' + this.qualityAuto + ',ar_' + aspectRatio  + ',w_';
 
-    const commonTransformation: string = this.formatAuto + ',' + this.backgroundAuto + ',' + this.pad + ',' + this.qualityAuto + ',ar_' + aspectRatio ;
+    const imageUrl: string = '/' + image + ' ';
 
     return this.supportedWidth
       .map(width => {
 
-        const transformations: string = commonTransformation + ',w_' + width;
-        return this.cloudinaryUrl + transformations + '/' + image + ' ' + width + 'w';
+        const transformations: string = commonTransformation + width;
+        return this.cloudinaryUrl + transformations + imageUrl + width + 'w';
       })
       .join(',');
   }
 
 
-  calculateAspectRatio(ratio: string): string {
+  static calculateAspectRatio(ratio: string): string {
 
     const ratioArray: string[] = ratio.split(':');
     const width: number = +ratioArray[0];

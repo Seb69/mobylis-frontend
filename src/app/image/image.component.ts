@@ -46,7 +46,7 @@ export class ImageComponent implements OnInit {
 
     if (this.autoHeight) {
       // Calculation aspect ratio in order to keep
-      this.calculatedRatio = this.imageService.calculateAspectRatio(this.ratio);
+      this.calculatedRatio = ImageService.calculateAspectRatio(this.ratio);
     }
   }
 

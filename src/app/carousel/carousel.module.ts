@@ -5,6 +5,7 @@ import {CarouselImageComponent} from './carousel-image/carousel-image.component'
 import {HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
 import {CarouselService} from './service/carousel.service';
 import {MyHammerConfig} from './hammer-config/hammer-config';
+import {LoadImageObservable} from './service/loadImageObservable';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {MyHammerConfig} from './hammer-config/hammer-config';
   ],
   providers: [
     CarouselService,
+    LoadImageObservable,
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig

@@ -1,5 +1,6 @@
 <img
   [srcset]="sourceSet"
+  *ngIf="index <= loadImage"
   draggable="false"
   sizes="
   (max-width: {{smallBreakpoint}}) {{xsmallSize}},

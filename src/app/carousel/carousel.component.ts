@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {ImageService} from '../core/image/image.service';
+import {LoadImageObservable} from './service/loadImageObservable';
 
 @Component({
   selector: 'app-carousel',
@@ -15,8 +16,12 @@ export class CarouselComponent implements OnInit {
   private _activeSlide = 0;
   public slidePosition = 0;
 
+  // Lazy laod
+  public loadImage = 0;
+
   // Percentage of the image slide to move image
   @Input() changePercentage = 25;
+
   // Aspect ratio of the image
   @Input() ratio = '1:1';
   // Image of the carousel
@@ -24,19 +29,26 @@ export class CarouselComponent implements OnInit {
 
   public calculatedRatio;
 
-  constructor(private imageService: ImageService) {
+  constructor(private loadImageObservable: LoadImageObservable) {
   }
 
   ngOnInit(): void {
-    console.log(this.images.length);
     this.slideCount = this.images.length;
     // Calculate aspect ratio
-    this.calculatedRatio = this.imageService.calculateAspectRatio(this.ratio);
+    this.calculatedRatio = ImageService.calculateAspectRatio(this.ratio);
   }
 
   onPanStart(): void {
     // Stop animation
     this.animation = false;
+
+    // LAZY Load
+    // Check whether the user remain on the same image
+    // If the user reach the last image => not increment loadImage
+    if (this.activeSlide === this.loadImage && this.activeSlide < this.slideCount - 1) {
+      this.loadImage += 1;
+      this.loadImageObservable.changeValue(this.loadImage);
+    }
   }
 
   onPanEnd(event: any): void {
