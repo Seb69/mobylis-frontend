@@ -17,6 +17,9 @@ export class CarouselImageComponent implements OnInit {
   @Input() largeSize? = '20vw';
   @Input() xlargeSize? = '15vw';
 
+  // Aspect ratio
+  @Input() aspectRatio? = '1:1';
+
   smallBreakpoint = '599px';
   mediumBreakpoint = '959px';
   largeBreakpoint = '1279px';
@@ -30,7 +33,7 @@ export class CarouselImageComponent implements OnInit {
 
   ngOnInit() {
     // Generate source set string
-    this.sourceSet = this.imageService.generateUrl(this.image);
+    this.sourceSet = this.imageService.generateCarouselUrl(this.image, this.aspectRatio);
   }
 
   get sourceSet(): string {

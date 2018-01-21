@@ -2,118 +2,22 @@
   [style.paddingTop]="calculatedRatio" style="background-color: blue;user-select: none;-webkit-user-drag: none;touch-action: none;" class="padding-container">
   <div
     class="carousel-container"
-    style="background-color: red;">
+    style="background-color: red">
 
-    <div style="width: 300%; cursor: pointer"
-         class="selectDisable"
-         [style.transform]="'translateX('+ deltaX +'px)'"
-         [ngClass]="animation ? 'animation': ''"
-         (panstart)="onPanStart($event)"
+    <div [style.width]="slideCount * 100 + '%'"
+         class="pointer"
+         [style.transform]="'translateX(' + deltaX + 'px)'"
+         [ngClass]="animation ? 'animation': null"
+         (panstart)="onPanStart()"
          (panend)="onPanEnd($event)"
          (panmove)="onPanMove($event)">
-      <!--[style.transform]="'translateX('+ deltaX +'px)'"-->
-      <!--[ngClass]="animation ? 'animation': ''"-->
-      <!--(panstart)="onPanStart($event)"-->
-      <!--(panend)="onPanEnd($event)"-->
-      <!--(panmove)="onPanMove($event)"-->
 
-      <!--<div fxFlex>-->
-      <app-responsive-image style="background-color: blue"
-                            image="logo_mobylis_ummmtg.jpg"></app-responsive-image>
-      <app-responsive-image style="background-color: blue"
-                            image="logo_mobylis_ummmtg.jpg"></app-responsive-image>
-      <app-responsive-image style="background-color: blue"
-                            image="logo_mobylis_ummmtg.jpg"></app-responsive-image>
-      <!--<app-image-->
-      <!--style="background-color: blue"-->
-      <!--image="logo_mobylis_ummmtg.jpg"-->
-      <!--[lazyLoad]="false"-->
-      <!--[ratio]="2269 +':367'"></app-image>-->
+      <app-responsive-image
+        style="background-color: blue"
+        [aspectRatio]="ratio"
+        *ngFor="let image of images"
+        [image]="image"></app-responsive-image>
+
     </div>
   </div>
 </div>
-
-<!--[style.transform]="'translateX('+ deltaX +'px)'"-->
-<!--[ngClass]="animation ? 'animation': ''"-->
-<!--(panstart)="onPanStart($event)"-->
-<!--(panend)="onPanEnd($event)"-->
-<!--(panmove)="onPanMove($event)"-->
-<!--<div class="slider" style="background-color: yellow"-->
-<!--&gt;-->
-<!--<app-image-->
-<!--image="logo_mobylis_ummmtg.jpg"-->
-<!--[lazyLoad]="false"-->
-<!--[autoHeight]="false"-->
-<!--[ratio]="2269 +':367'"></app-image>-->
-<!--&lt;!&ndash;<app-responsive-image style="background-color: blue"&ndash;&gt;-->
-<!--&lt;!&ndash;image="logo_mobylis_ummmtg.jpg"></app-responsive-image>&ndash;&gt;-->
-<!--</div>-->
-
-<!--<app-image style="background-color: blue"-->
-<!--[style.transform]="'translateX('+ deltaX +'px)'"-->
-<!--[ngClass]="animation ? 'animation': ''"-->
-<!--(panstart)="onPanStart($event)"-->
-<!--(panend)="onPanEnd($event)"-->
-<!--(panmove)="onPanMove($event)"-->
-<!--[lazyLoad]="false"-->
-<!--[ratio]="2269 +':367'"-->
-<!--image="logo_mobylis_ummmtg.jpg"></app-image>-->
-
-
-<!--<app-responsive-image-->
-<!--image="logo_mobylis_ummmtg.jpg"></app-responsive-image>-->
-
-
-<!--<app-image-->
-<!--image="logo_mobylis_ummmtg.jpg"-->
-<!--[lazyLoad]="false"-->
-<!--[ratio]="2269 +':367'"></app-image>-->
-<!--</div>-->
-<!--</div>-->
-
-
-<!--<div fxFlex-->
-<!--style="background-color: blue" class="has-slider">-->
-<!--&lt;!&ndash;[style.transform]="'translateX('+ transformPercentage +'%)'"&ndash;&gt;-->
-<!--<div-->
-<!--class="slider"-->
-<!--style="background-color: red;"-->
-<!--[style.transform]="'translateX('+ deltaX +'px)'"-->
-<!--[ngClass]=" animation ? 'animation': ''"-->
-<!--(panstart)="onPanStart($event)"-->
-<!--(panend)="onPanEnd($event)"-->
-<!--(panmove)="onPanMove($event)"-->
-<!--&gt;-->
-
-<!--<app-image style="background-color: red"-->
-<!--image="logo_mobylis_ummmtg.jpg"-->
-<!--[lazyLoad]="false"-->
-<!--ratio="2269:367"></app-image>-->
-<!--</div>-->
-<!--</div>-->
-
-
-<!--<div fxLayout="row"-->
-<!--fxLayoutAlign.gt-xs="center center"-->
-<!--fxLayout.xs="column">-->
-<!--<div fxFlex >-->
-<!--&lt;!&ndash;<app-image image="Signature_xt56sy.pdf" ratio="841:595"></app-image>&ndash;&gt;-->
-<!--</div>-->
-<!--<div style="height: 1em"></div>-->
-<!--&lt;!&ndash;<div fxFlex>&ndash;&gt;-->
-<!--&lt;!&ndash;<responsive-image image="sample.jpg" ratio="864:576"></responsive-image>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--<div style="height: 1em"></div>-->
-<!--<div fxFlex>-->
-<!--<app-image image="Photo_kbyuqw.jpg" ratio="1184:1765"></app-image>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<app-image-->
-<!--image="logo_mobylis_ummmtg.jpg"-->
-<!--[lazyLoad]="false"-->
-<!--ratio="2269:367"></app-image>-->
-<!--<app-image-->
-<!--image="logo_mobylis_ummmtg.jpg"-->
-<!--[lazyLoad]="false"-->
-<!--ratio="2269:367"></app-image>-->

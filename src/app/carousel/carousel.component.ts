@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ImageService} from '../core/image/image.service';
 
 @Component({
   selector: 'app-carousel',
@@ -8,64 +9,62 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-  public percentage;
   private _deltaX;
   public animation = false;
-  public viewPercentage;
   public slideCount = 3;
   private _activeSlide = 0;
   public slidePosition = 0;
+
+  // Percentage of the image slide to move image
   @Input() changePercentage = 25;
-  @Input() ratio = 25;
+  // Aspect ratio of the image
+  @Input() ratio = '1:1';
+  // Image of the carousel
+  @Input() images: string[];
+
   public calculatedRatio;
 
-  ngOnInit(): void {
-    const ratioArray: string[] = '2269:367'.split(':');
-    const width: number = +ratioArray[0];
-    const height: number = +ratioArray[1];
-
-    this.calculatedRatio = String((height / width) * 100).concat('%');
+  constructor(private imageService: ImageService) {
   }
 
-  onPanStart(event: any): void {
+  ngOnInit(): void {
+    console.log(this.images.length);
+    this.slideCount = this.images.length;
+    // Calculate aspect ratio
+    this.calculatedRatio = this.imageService.calculateAspectRatio(this.ratio);
+  }
+
+  onPanStart(): void {
     // Stop animation
-    console.log('onPanStart');
     this.animation = false;
   }
 
   onPanEnd(event: any): void {
-    console.log('onPanEnd');
 
     // Start animation
     this.animation = true;
 
-    // Velicity Check : if the user make a quick move
+    // Velocity Check : if the user make a quick move
     if (event.overallVelocityX > 1) {
-      console.log('Velocity hit : left');
       this.moveLeft();
     } else if (event.overallVelocityX < -1) {
-      console.log('Velocity hit : right');
       this.moveRight();
     } else {
 
       // Calculate view percentage
-      this.percentage = 100 / this.slideCount * event.deltaX / window.innerWidth;
-      this.viewPercentage = this.percentage * this.slideCount;
+      const percentage = 100 / this.slideCount * event.deltaX / window.innerWidth;
+      const viewPercentage = percentage * this.slideCount;
 
-      if (Math.sign(this.viewPercentage) === 1) {
-        if (this.viewPercentage > this.changePercentage) {
-          console.log('swipe left');
+      if (Math.sign(viewPercentage) === 1) {
+        if (viewPercentage > this.changePercentage) {
           this.moveLeft();
         } else {
-          console.log('stay');
           this.moveCenter();
         }
-      } else if (Math.sign(this.viewPercentage) === -1) {
-        if (this.viewPercentage < -this.changePercentage) {
-          console.log('swipe right');
+      } else if (Math.sign(viewPercentage) === -1) {
+        if (viewPercentage < -this.changePercentage) {
           this.moveRight();
         } else {
-          console.log('stay');
           this.moveCenter();
         }
       }
@@ -73,12 +72,13 @@ export class CarouselComponent implements OnInit {
 
   }
 
+  // On pan move translate image
   onPanMove(event: any): void {
     this.deltaX = event.deltaX - this.slidePosition;
   }
 
   moveCenter() {
-    this.calculatPosition();
+    this.setDeltaXPosition();
   }
 
   moveRight() {
@@ -87,12 +87,7 @@ export class CarouselComponent implements OnInit {
     } else { // Not the last slide
       this.activeSlide = this.activeSlide + 1;
     }
-    this.calculatPosition();
-  }
-
-  private calculatPosition() {
-    this.slidePosition = window.innerWidth  * this.activeSlide ;
-    this.deltaX = - this.slidePosition;
+    this.setDeltaXPosition();
   }
 
   moveLeft() {
@@ -101,7 +96,12 @@ export class CarouselComponent implements OnInit {
     } else { // Not the first slide
       this.activeSlide = this.activeSlide - 1;
     }
-    this.calculatPosition();
+    this.setDeltaXPosition();
+  }
+
+  private setDeltaXPosition() {
+    this.deltaX = - window.innerWidth  * this.activeSlide ;
+    this.slidePosition = - this.deltaX;
   }
 
   get activeSlide(): number {
@@ -113,7 +113,6 @@ export class CarouselComponent implements OnInit {
   }
 
   get deltaX() {
-    console.log('CHANGE DETECTION');
     return this._deltaX;
   }
 

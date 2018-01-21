@@ -14,20 +14,41 @@ export class ImageService {
   // Default Transformations
   private _formatAuto = 'f_auto';
   private _qualityAuto = 'q_auto';
+  private _backgroundAuto = 'b_auto';
+  private _pad = 'c_pad';
+
+  // Cloudinary URL
+  private _cloudinaryUrl = this.scheme + '://' + this.cloudinaryHostName + '/' + this.projectId + '/image/upload/';
 
   constructor() {
   }
 
   generateUrl(image: string): string {
 
+    const commonTransformation: string = this.formatAuto + ',' + this.qualityAuto;
+
     return this.supportedWidth
       .map(width => {
 
-        const transformations: string = this.formatAuto + ',' + this.qualityAuto + ',w_' + width;
-        return this.scheme + '://' + this.cloudinaryHostName + '/' + this.projectId + '/image/upload/' + transformations + '/' + image + ' ' + width + 'w';
+        const transformations: string = commonTransformation + ',w_' + width;
+        return this.cloudinaryUrl + transformations + '/' + image + ' ' + width + 'w';
       })
       .join(',');
   }
+
+  generateCarouselUrl(image: string, aspectRatio: string): string {
+
+    const commonTransformation: string = this.formatAuto + ',' + this.backgroundAuto + ',' + this.pad + ',' + this.qualityAuto + ',ar_' + aspectRatio ;
+
+    return this.supportedWidth
+      .map(width => {
+
+        const transformations: string = commonTransformation + ',w_' + width;
+        return this.cloudinaryUrl + transformations + '/' + image + ' ' + width + 'w';
+      })
+      .join(',');
+  }
+
 
   calculateAspectRatio(ratio: string): string {
 
@@ -56,6 +77,18 @@ export class ImageService {
 
   get formatAuto(): string {
     return this._formatAuto;
+  }
+
+  get pad(): string {
+    return this._pad;
+  }
+
+  get backgroundAuto(): string {
+    return this._backgroundAuto;
+  }
+
+  get cloudinaryUrl(): string {
+    return this._cloudinaryUrl;
   }
 
 }
