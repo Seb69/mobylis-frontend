@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvatarComponent } from './avatar.component';
+import { AvatarComponent } from './carousel.component';
 
 describe('AvatarComponent', () => {
   let component: AvatarComponent;

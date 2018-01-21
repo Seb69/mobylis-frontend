@@ -22,7 +22,6 @@
         "styles.scss"
       ],
       "scripts": [
-        "../node_modules/hammerjs/hammer.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -52,7 +51,6 @@
         "styles.scss"
       ],
       "scripts": [
-        "../node_modules/hammerjs/hammer.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

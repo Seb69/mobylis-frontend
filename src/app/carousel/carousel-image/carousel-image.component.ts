@@ -1,13 +1,12 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {ImageService} from '../core/image/image.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {ImageService} from '../../core/image/image.service';
 
 @Component({
-  selector: 'app-image',
-  templateUrl: './image.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./image.component.scss']
+  selector: 'app-responsive-image',
+  templateUrl: './carousel-image.component.html',
+  styleUrls: ['./carousel-image.component.scss']
 })
-export class ImageComponent implements OnInit {
+export class CarouselImageComponent implements OnInit {
 
   @Input() image: string;
 
@@ -17,17 +16,6 @@ export class ImageComponent implements OnInit {
   @Input() mediumSize? = '25vw';
   @Input() largeSize? = '20vw';
   @Input() xlargeSize? = '15vw';
-
-  // Aspect Ratio
-  // Need for pre load
-  @Input() ratio: string;
-
-  // Lazy load
-  @Input() lazyLoad: Boolean = true;
-  @Input() offset = 0;
-
-  // Auto heigth
-  @Input() autoHeight: Boolean = true;
 
   smallBreakpoint = '599px';
   mediumBreakpoint = '959px';
@@ -43,11 +31,6 @@ export class ImageComponent implements OnInit {
   ngOnInit() {
     // Generate source set string
     this.sourceSet = this.imageService.generateUrl(this.image);
-
-    if (this.autoHeight) {
-      // Calculation aspect ratio in order to keep
-      this.calculatedRatio = this.imageService.calculateAspectRatio(this.ratio);
-    }
   }
 
   get sourceSet(): string {
@@ -65,5 +48,4 @@ export class ImageComponent implements OnInit {
   set calculatedRatio(value: string) {
     this._calculatedRatio = value;
   }
-
 }
