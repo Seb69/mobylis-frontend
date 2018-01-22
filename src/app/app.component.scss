@@ -1,3 +1,5 @@
+@import '../styles.scss';
+
 .super-header{
   background-color: #24303D;
   position: relative;
@@ -8,3 +10,78 @@
   width: 600px;
   height: 300px;
 }
+
+
+*:focus {
+  outline: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+.center-h {
+  display: flex;
+  justify-content: center; /* align horizontal */
+}
+
+.center-v {
+  display: flex;
+  align-items: center; /* align vertical */
+}
+
+
+.sec1 {
+  background: red;
+  color:white;
+  flex-grow: 1;
+}
+
+.sec2 {
+  background: yellow;
+  color:white;
+  flex-grow: 2;
+
+}
+
+.sec3 {
+  background: blue;
+  color:white;
+  flex-grow: 2;
+}
+
+.sec1, .sec2, .sec3 {
+  //padding: 30px;
+  //margin: auto;
+  height: 100px;
+}
+
+
+.container {
+  /* We first create a flex layout context */
+  @include flexbox();
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: center;
+
+  //align-items: center;
+}
+
+/* Medium screens */
+@media all and (max-width: 600px) {
+  /* We tell both sidebars to share a row */
+  .container {
+    flex-direction: column;
+  }
+}
+
+/* Medium screens */
+@media all and (min-width: 600px) {
+  /* We tell both sidebars to share a row */
+  .container {
+    flex-direction: row;
+  }
+}
+

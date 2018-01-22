@@ -1,18 +1,31 @@
 <div class="super-header"></div>
-<div fxLayout="row"
-     fxLayoutAlign.gt-xs="center center"
-     fxLayout.xs="column">
+<!--<div fxLayout>-->
+<!--<div fxFlex fxFlex.gt-sm="33">-->
+<!--<app-image-->
+<!--style="background-color: blue"-->
+<!--image="logo_mobylis_ummmtg.jpg"-->
+<!--[lazyLoad]="false"-->
+<!--ratio="2269:367"></app-image>-->
+<!--</div>-->
+<!--<div fxFlex style="background-color: red">-->
+<!--&lt;!&ndash;<mat-card>&ndash;&gt;-->
+<!--<input class="search-input" placeholder="Rechercher">-->
+<!--&lt;!&ndash;</mat-card>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
 
-  <div fxFlex fxFlex.gt-sm="33">
+<div class="container">
+  <div style="background-color: blue;" class="logo center">
     <app-image
-      style="background-color: blue"
+      style="background-color: blue; "
       image="logo_mobylis_ummmtg.jpg"
       [lazyLoad]="false"
       ratio="2269:367"></app-image>
   </div>
-  <div fxFlex>
-    <mat-card>
-      <input class="search-input" placeholder="Rechercher">
-    </mat-card>
+  <div style="background-color: red" class="search ">
+    <input class="search-input" placeholder="Rechercher">
   </div>
 </div>
+
+
+

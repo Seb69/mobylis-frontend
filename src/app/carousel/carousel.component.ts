@@ -67,13 +67,13 @@ export class CarouselComponent implements OnInit {
       const percentage = 100 / this.slideCount * event.deltaX / window.innerWidth;
       const viewPercentage = percentage * this.slideCount;
 
-      if (Math.sign(viewPercentage) === 1) {
+      if (Math.sign(viewPercentage) === 1) { // Left pan move
         if (viewPercentage > this.changePercentage) {
           this.moveLeft();
         } else {
           this.moveCenter();
         }
-      } else if (Math.sign(viewPercentage) === -1) {
+      } else if (Math.sign(viewPercentage) === -1) { // Right pan move
         if (viewPercentage < -this.changePercentage) {
           this.moveRight();
         } else {

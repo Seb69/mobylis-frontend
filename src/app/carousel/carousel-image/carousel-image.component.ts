@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ImageService} from '../../core/image/image.service';
 import {LoadImageObservable} from '../service/loadImageObservable';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-responsive-image',
@@ -8,7 +9,7 @@ import {LoadImageObservable} from '../service/loadImageObservable';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./carousel-image.component.scss']
 })
-export class CarouselImageComponent implements OnInit {
+export class CarouselImageComponent implements OnInit, OnDestroy {
 
   @Input() image: string;
 
@@ -34,6 +35,8 @@ export class CarouselImageComponent implements OnInit {
   private _sourceSet: string;
   private _calculatedRatio: string;
 
+  private subscription: Subscription;
+
   constructor(private imageService: ImageService, private loadImageObservale: LoadImageObservable, private cd: ChangeDetectorRef) {
   }
 
@@ -41,18 +44,23 @@ export class CarouselImageComponent implements OnInit {
     // Generate source set string
     this.sourceSet = this.imageService.generateCarouselUrl(this.image, this.aspectRatio);
 
-    this.loadImageObservale.getValue().subscribe(loadImage => {
-      console.log('Within observable subscriber ');
-
-      this.loadImage = loadImage;
-
-      // Trigger Change detection
-      this.cd.markForCheck();
+    this.subscription = this.loadImageObservale.getValue().subscribe(loadImage => {
+      if (this.index <= loadImage) {
+        // Update load image
+        this.loadImage = loadImage;
+        // Trigger Change detection
+        this.cd.markForCheck();
+        // No need to subscribe anymore
+        this.subscription.unsubscribe();
+      }
     });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   get sourceSet(): string {
-    console.log('CHANGE DETECTION');
     return this._sourceSet;
   }
 
