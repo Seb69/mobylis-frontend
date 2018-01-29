@@ -1,0 +1,13 @@
+{
+  "name": "Angular 2 HN",
+  "short_name": "Angular 2 HN",
+  "icons": [
+    {
+      "src": "assets/logo_mobylis.jpg",
+      "sizes": "192x192",
+      "type": "image\/jpg"
+    }
+  ],
+  "display": "standalone",
+  "start_url": "./?utm_source=web_app_manifest"
+}

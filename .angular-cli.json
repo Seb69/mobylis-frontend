@@ -5,10 +5,15 @@
   },
   "apps": [
     {
+      "appShell": {
+        "app": "pre-render",
+        "route": "app-shell-path"
+      },
       "root": "src",
       "outDir": "dist",
       "assets": [
         "assets",
+        "manifest.json",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -18,28 +23,26 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
+      "serviceWorker": true,
       "styles": [
         "styles.scss"
       ],
-      "scripts": [
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-      },
-      "appShell": {
-        "app": "pre-render",
-        "route": "app-shell-path"
       }
     },
     {
+      "name": "pre-render",
       "root": "src",
       "outDir": "dist-server/",
       "assets": [
         "assets",
         "favicon.ico"
       ],
+      "platform": "server",
       "index": "index.html",
       "main": "main.server.ts",
       "polyfills": "polyfills.ts",
@@ -50,15 +53,12 @@
       "styles": [
         "styles.scss"
       ],
-      "scripts": [
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-      },
-      "platform": "server",
-      "name": "pre-render"
+      }
     }
   ],
   "e2e": {
@@ -87,6 +87,7 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {
+    }
   }
 }

@@ -5,16 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-// import {StyleModule} from './style.module';
 import {MenuComponent} from './menu/menu.component';
 import {ImageModule} from './image/image.module';
 import {CoreModule} from './core/core.module';
-import {CarouselComponent} from './carousel/carousel.component';
-import {CarouselImageComponent} from './carousel/carousel-image/carousel-image.component';
-import {ImageService} from './core/image/image.service';
 import {CarouselModule} from './carousel/carousel.module';
-
-
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,6 +19,7 @@ import {CarouselModule} from './carousel/carousel.module';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     AppRoutingModule,
     CoreModule,
     // StyleModule,
