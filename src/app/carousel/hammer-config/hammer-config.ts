@@ -1,5 +1,6 @@
 import {HammerGestureConfig} from '@angular/platform-browser';
 import {Injectable} from '@angular/core';
+
 declare var Hammer: any;
 
 @Injectable()
@@ -17,7 +18,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
       touchAction: 'pan-y',
     });
     return hammerElement;
-  };
+  }
 
   /**
    * Set up pan threshold and direction
@@ -25,7 +26,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
    */
   // events = event.preventDefault();
   overrides = <any>{
-    'pan': {threshold: 10, direction: 6} // override default settings
+    'pan': {threshold: 0, direction: 6} // override default settings
   };
 
 

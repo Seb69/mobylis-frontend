@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener, Input, OnInit} from '@angular/core';
 import {ImageService} from '../core/image/image.service';
 import {LoadImageObservable} from './service/loadImageObservable';
 
@@ -12,11 +12,11 @@ export class CarouselComponent implements OnInit {
 
   private _deltaX;
   public animation = false;
-  public slideCount = 3;
+  public slideCount;
   private _activeSlide = 0;
   public slidePosition = 0;
 
-  // Lazy laod
+  // Lazy load
   public loadImage = 0;
 
   // Percentage of the image slide to move image
@@ -45,7 +45,8 @@ export class CarouselComponent implements OnInit {
     // LAZY Load
     // Check whether the user remain on the same image
     // If the user reach the last image => not increment loadImage
-    if (this.activeSlide === this.loadImage && this.activeSlide < this.slideCount - 1) {
+    // if (this.activeSlide === this.loadImage && this.activeSlide < this.slideCount - 1) {
+    if (this.activeSlide === 0 && this.loadImage < 1) {
       this.loadImage += 1;
       this.loadImageObservable.changeValue(this.loadImage);
     }
@@ -76,6 +77,11 @@ export class CarouselComponent implements OnInit {
       } else if (Math.sign(viewPercentage) === -1) { // Right pan move
         if (viewPercentage < -this.changePercentage) {
           this.moveRight();
+          // Check if the loadImage is the last one or not
+          if (this.loadImage !== this.slideCount) {
+          this.loadImage += 1;
+          this.loadImageObservable.changeValue(this.loadImage);
+          }
         } else {
           this.moveCenter();
         }
@@ -107,6 +113,13 @@ export class CarouselComponent implements OnInit {
     if (this.activeSlide === 0 ) {
     } else { // Not the first slide
       this.activeSlide = this.activeSlide - 1;
+    }
+    this.setDeltaXPosition();
+  }
+
+  onResize() {
+    if (this.animation !== false) {
+      this.animation = false;
     }
     this.setDeltaXPosition();
   }

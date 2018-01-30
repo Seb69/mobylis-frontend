@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {CarouselComponent} from './carousel.component';
 import {CarouselImageComponent} from './carousel-image/carousel-image.component';
 import {HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
-import {CarouselService} from './service/carousel.service';
 import {MyHammerConfig} from './hammer-config/hammer-config';
 import {LoadImageObservable} from './service/loadImageObservable';
 
@@ -19,7 +18,6 @@ import {LoadImageObservable} from './service/loadImageObservable';
     CarouselImageComponent
   ],
   providers: [
-    CarouselService,
     LoadImageObservable,
     {
       provide: HAMMER_GESTURE_CONFIG,

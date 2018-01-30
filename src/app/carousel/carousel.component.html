@@ -1,20 +1,29 @@
 <div
-  style="touch-action: pan-y pan-x"
-  [style.paddingTop]="calculatedRatio"  class="padding-container">
-  <div class="carousel-container" >
-
-    <div
-
-      style="background-color: red"
-      [style.width]="slideCount * 100 + '%'"
-         class="pointer"
-         [style.transform]="'translateX(' + deltaX + 'px)'"
-         [ngClass]="animation ? 'animation': null"
+  [style.paddingTop]="calculatedRatio" class="padding-container"
+  (window:resize)="onResize()">
+  <div class="carousel-container">
+    <div style="position: absolute;display: flex; width: 100vw; height: 100%"
          (panstart)="onPanStart()"
          (panend)="onPanEnd($event)"
          (panmove)="onPanMove($event)">
+      <div style="position: absolute;right: 0;  z-index: 2000; background-color: red">
+        RIGHT arrow
+      </div>
+      <div style="position: absolute;left: 0; z-index: 2000; background-color: red">
+        LEFT arrow
+      </div>
+    </div>
+    <div
+      style="background-color: red"
+      [style.width]="slideCount * 100 + '%'"
+      class="pointer"
+      [style.transform]="'translateX(' + deltaX + 'px)'"
+      [ngClass]="animation ? 'animation': null"
+      (panstart)="onPanStart()"
+      (panend)="onPanEnd($event)"
+      (panmove)="onPanMove($event)">
 
-        <!--[loadImage]="loadImage"-->
+      <!--[loadImage]="loadImage"-->
       <app-responsive-image
         *ngFor="let image of images;let i = index"
         style="background-color: red"
