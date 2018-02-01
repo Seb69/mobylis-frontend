@@ -54,9 +54,6 @@ export class CarouselComponent implements OnInit {
 
   onPanEnd(event: any): void {
 
-    // Start animation
-    this.animation = true;
-
     // Velocity Check : if the user make a quick move
     if (event.overallVelocityX > 1) {
       this.moveLeft();
@@ -77,11 +74,7 @@ export class CarouselComponent implements OnInit {
       } else if (Math.sign(viewPercentage) === -1) { // Right pan move
         if (viewPercentage < -this.changePercentage) {
           this.moveRight();
-          // Check if the loadImage is the last one or not
-          if (this.loadImage !== this.slideCount) {
-          this.loadImage += 1;
-          this.loadImageObservable.changeValue(this.loadImage);
-          }
+
         } else {
           this.moveCenter();
         }
@@ -90,25 +83,42 @@ export class CarouselComponent implements OnInit {
 
   }
 
+
   // On pan move translate image
   onPanMove(event: any): void {
     this.deltaX = event.deltaX - this.slidePosition;
   }
 
   moveCenter() {
+    this.animation = true;
     this.setDeltaXPosition();
   }
 
   moveRight() {
+    // Start animation
+    this.animation = true;
     // Last slide
     if (this.activeSlide === this.slideCount - 1 ) {
     } else { // Not the last slide
+      // Check if the loadImage is the last one or not
+      if (this.loadImage !== this.slideCount) {
+        // If first lazy load slide => load the following one
+        if (this.loadImage === 0 ) {
+        this.loadImage += 2;
+        } else {
+        this.loadImage += 1;
+        }
+        this.loadImageObservable.changeValue(this.loadImage);
+      }
       this.activeSlide = this.activeSlide + 1;
     }
     this.setDeltaXPosition();
   }
 
   moveLeft() {
+    // Start animation
+    this.animation = true;
+
     // First slide
     if (this.activeSlide === 0 ) {
     } else { // Not the first slide

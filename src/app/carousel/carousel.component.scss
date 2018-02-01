@@ -10,6 +10,16 @@
   position: relative;
 }
 
+.pan-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  // ensure pan container always on first plan
+  z-index: 1000;
+
+}
 
 .animation {
   // Animate
@@ -18,4 +28,52 @@
 
 .pointer {
   cursor: pointer;
+}
+
+// Show navigation element only when hover
+// Restrict to desktop only
+@media (hover:hover) {
+  .pan-container:hover #on-hover {
+    display: flex;
+  }
+}
+
+
+.arrow-container {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#right-arrow-container {
+  position: absolute;
+  right: 0;
+
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.25),
+    rgba(255,0,0,0));
+}
+
+#left-arrow-container {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.25),
+    rgba(255,0,0,0));
+}
+
+
+.arrow {
+  width: 45%;
+  cursor: pointer;
+}
+
+#right-align {
+  position: absolute;
+  right: 0;
+
+}
+
+#on-hover {
+  display: none;
+  height: 100%;
+  width: 100%;
 }

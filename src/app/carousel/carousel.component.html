@@ -1,32 +1,33 @@
+<!--<img src="../../assets/left-arrow.svg" id="right-arrow">-->
+<style type="text/css">
+  .right-align {
+  }
+</style>
 <div
   [style.paddingTop]="calculatedRatio" class="padding-container"
   (window:resize)="onResize()">
   <div class="carousel-container">
-    <div style="position: absolute;display: flex; width: 100vw; height: 100%"
+    <div class="pan-container"
          (panstart)="onPanStart()"
          (panend)="onPanEnd($event)"
          (panmove)="onPanMove($event)">
-      <div style="position: absolute;right: 0;  z-index: 2000; background-color: red">
-        RIGHT arrow
-      </div>
-      <div style="position: absolute;left: 0; z-index: 2000; background-color: red">
-        LEFT arrow
+      <div id="on-hover">
+        <div id="left-arrow-container" class="arrow-container">
+          <img src="../../assets/left-arrow.svg" draggable="false" class="arrow" (click)="moveLeft()">
+        </div>
+        <div id="right-arrow-container" class="arrow-container">
+          <img src="../../assets/right-arrow.svg" draggable="false" class="arrow" (click)="moveRight()">
+        </div>
       </div>
     </div>
     <div
-      style="background-color: red"
       [style.width]="slideCount * 100 + '%'"
-      class="pointer"
       [style.transform]="'translateX(' + deltaX + 'px)'"
-      [ngClass]="animation ? 'animation': null"
-      (panstart)="onPanStart()"
-      (panend)="onPanEnd($event)"
-      (panmove)="onPanMove($event)">
+      class="pointer"
+      [ngClass]="animation ? 'animation': null">
 
-      <!--[loadImage]="loadImage"-->
       <app-responsive-image
         *ngFor="let image of images;let i = index"
-        style="background-color: red"
         [aspectRatio]="ratio"
         [index]="i"
         [image]="image"></app-responsive-image>
