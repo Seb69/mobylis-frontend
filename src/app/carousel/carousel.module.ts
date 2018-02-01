@@ -14,8 +14,7 @@ import {LoadImageObservable} from './service/loadImageObservable';
     CarouselComponent,
     CarouselImageComponent],
   exports: [
-    CarouselComponent,
-    CarouselImageComponent
+    CarouselComponent
   ],
   providers: [
     LoadImageObservable,

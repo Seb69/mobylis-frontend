@@ -1,8 +1,3 @@
-<!--<img src="../../assets/left-arrow.svg" id="right-arrow">-->
-<style type="text/css">
-  .right-align {
-  }
-</style>
 <div
   [style.paddingTop]="calculatedRatio" class="padding-container"
   (window:resize)="onResize()">
@@ -12,11 +7,10 @@
          (panend)="onPanEnd($event)"
          (panmove)="onPanMove($event)">
       <div id="pagination">
-        <div style="display: inline-block">
-          <div class="round" style="display: inline-block"></div>
-        </div>
-        <div style="display: inline-block">
-          <div class="round-empty" style="display: inline-block"></div>
+        <div class="round-container" *ngFor="let slide of slideArray; let i = index">
+          <div class="round-active round"
+               [ngClass]="activeSlide === (i) ? 'round-active': 'round-empty'">
+          </div>
         </div>
       </div>
       <div id="on-hover">
