@@ -11,6 +11,14 @@
          (panstart)="onPanStart()"
          (panend)="onPanEnd($event)"
          (panmove)="onPanMove($event)">
+      <div id="pagination">
+        <div style="display: inline-block">
+          <div class="round" style="display: inline-block"></div>
+        </div>
+        <div style="display: inline-block">
+          <div class="round-empty" style="display: inline-block"></div>
+        </div>
+      </div>
       <div id="on-hover">
         <div id="left-arrow-container" class="arrow-container">
           <img src="../../assets/left-arrow.svg" draggable="false" class="arrow" (click)="moveLeft()">
@@ -19,6 +27,8 @@
           <img src="../../assets/right-arrow.svg" draggable="false" class="arrow" (click)="moveRight()">
         </div>
       </div>
+
+
     </div>
     <div
       [style.width]="slideCount * 100 + '%'"

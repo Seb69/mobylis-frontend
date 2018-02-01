@@ -116,6 +116,7 @@ export class CarouselComponent implements OnInit {
   }
 
   moveLeft() {
+    console.log('on move left');
     // Start animation
     this.animation = true;
 
