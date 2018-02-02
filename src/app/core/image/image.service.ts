@@ -59,8 +59,37 @@ export class ImageService {
     const width: number = +ratioArray[0];
     const height: number = +ratioArray[1];
 
-    return String((height / width) * 100).concat('%');
+    return String((height / width) * 100 ).concat('%');
   }
+
+  static calculateAspectRatioResponsive(ratio: string, widthFactor): string {
+
+    const ratioArray: string[] = ratio.split(':');
+    const width: number = +ratioArray[0];
+    const height: number = +ratioArray[1];
+
+    return String((height / width) * 100 * widthFactor).concat('%');
+  }
+
+
+  // static getWidtFactor(window: any): number {
+  //
+  //   const windowWidth: number = window.innerWidth;
+  //
+  //   let widthFactore: number;
+  //
+  //   if (windowWidth <= 599) {
+  //     return this.xsmallSize / 100;
+  //   } else if (windowWidth >= 600 && windowWidth <= 959) {
+  //      return this.smallSize / 100;
+  //   } else if (windowWidth >= 960 && windowWidth <= 1279) {
+  //     return this.mediumSize / 100;
+  //   } else if (windowWidth >= 1280 && windowWidth <= 1919) {
+  //     return this.largeSize / 100;
+  //   } else {
+  //     return this.xlargeSize / 100;
+  //   }
+  // }
 
   get scheme(): string {
     return this._scheme;

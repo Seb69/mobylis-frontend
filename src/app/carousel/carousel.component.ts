@@ -1,6 +1,9 @@
-import {ChangeDetectionStrategy, Component, HostListener, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener, Inject, InjectionToken, Input, OnInit} from '@angular/core';
 import {ImageService} from '../core/image/image.service';
 import {LoadImageObservable} from './service/loadImageObservable';
+
+// Needed to for server side rendering with window object
+export const WINDOW = new InjectionToken('WINDOW');
 
 @Component({
   selector: 'app-carousel',
@@ -9,6 +12,13 @@ import {LoadImageObservable} from './service/loadImageObservable';
   templateUrl: './carousel.component.html',
 })
 export class CarouselComponent implements OnInit {
+  get responsiveWidth() {
+    return this._responsiveWidth;
+  }
+
+  set responsiveWidth(value) {
+    this._responsiveWidth = value;
+  }
 
   private _deltaX;
   public animation = false;
@@ -38,14 +48,20 @@ export class CarouselComponent implements OnInit {
 
   public calculatedRatio;
 
-  constructor(private loadImageObservable: LoadImageObservable) {
+  private _responsiveWidth;
+
+  constructor(private loadImageObservable: LoadImageObservable,
+              @Inject(WINDOW) private window) {
   }
 
   ngOnInit(): void {
     this.slideCount = this.images.length;
     this.slideArray = new Array(this.slideCount);
+
+    const widthFactor: number = this.getWidthFactor();
     // Calculate aspect ratio
-    this.calculatedRatio = ImageService.calculateAspectRatio(this.ratio);
+    this.calculatedRatio = ImageService.calculateAspectRatioResponsive(this.ratio, widthFactor);
+    this.responsiveWidth = this.getWidth();
   }
 
   onPanStart(): void {
@@ -143,6 +159,9 @@ export class CarouselComponent implements OnInit {
       this.animation = false;
     }
     this.setDeltaXPosition();
+    const widthFaxctor: number = this.getWidthFactor();
+    // Calculate aspect ratio
+    this.calculatedRatio = ImageService.calculateAspectRatioResponsive(this.ratio, widthFaxctor);
   }
 
   private setDeltaXPosition() {
@@ -162,8 +181,42 @@ export class CarouselComponent implements OnInit {
       widthFactore = this.xlargeSize / 100;
     }
 
-    this.deltaX = - window.innerWidth * this.activeSlide * widthFactore;
+    this.deltaX = -window.innerWidth * this.activeSlide * widthFactore;
     this.slidePosition = -this.deltaX;
+  }
+
+  getWidth(): string {
+
+    const windowWidth: number = window.innerWidth;
+
+    if (windowWidth <= 599) {
+      return this.xsmallSize + 'vw';
+    } else if (windowWidth >= 600 && windowWidth <= 959) {
+      return this.smallSize + 'vw';
+    } else if (windowWidth >= 960 && windowWidth <= 1279) {
+      return this.mediumSize + 'vw';
+    } else if (windowWidth >= 1280 && windowWidth <= 1919) {
+      return this.largeSize + 'vw';
+    } else {
+      return this.xlargeSize + 'vw';
+    }
+  }
+
+  getWidthFactor(): number {
+
+    const windowWidth: number = window.innerWidth;
+
+    if (windowWidth <= 599) {
+      return this.xsmallSize / 100;
+    } else if (windowWidth >= 600 && windowWidth <= 959) {
+      return this.smallSize / 100;
+    } else if (windowWidth >= 960 && windowWidth <= 1279) {
+      return this.mediumSize / 100;
+    } else if (windowWidth >= 1280 && windowWidth <= 1919) {
+      return this.largeSize / 100;
+    } else {
+      return this.xlargeSize / 100;
+    }
   }
 
   get activeSlide(): number {

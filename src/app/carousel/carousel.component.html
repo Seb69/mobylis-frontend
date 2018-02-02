@@ -1,5 +1,8 @@
 <div
-  [style.paddingTop]="calculatedRatio" class="padding-container"
+  style="background-color: red"
+  [style.width]="responsiveWidth"
+  [style.paddingTop]="calculatedRatio"
+  class="padding-container"
   (window:resize)="onResize()">
   <div class="carousel-container">
     <div class="pan-container"
