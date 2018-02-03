@@ -1,9 +1,5 @@
-import {ChangeDetectionStrategy, Component, HostListener, Inject, InjectionToken, Input, OnInit} from '@angular/core';
-import {ImageService} from '../core/image/image.service';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {LoadImageObservable} from './service/loadImageObservable';
-
-// Needed to for server side rendering with window object
-export const WINDOW = new InjectionToken('WINDOW');
 
 @Component({
   selector: 'app-carousel',
@@ -12,13 +8,6 @@ export const WINDOW = new InjectionToken('WINDOW');
   templateUrl: './carousel.component.html',
 })
 export class CarouselComponent implements OnInit {
-  get responsiveWidth() {
-    return this._responsiveWidth;
-  }
-
-  set responsiveWidth(value) {
-    this._responsiveWidth = value;
-  }
 
   private _deltaX;
   public animation = false;
@@ -48,20 +37,14 @@ export class CarouselComponent implements OnInit {
 
   public calculatedRatio;
 
-  private _responsiveWidth;
-
   constructor(private loadImageObservable: LoadImageObservable,
-              @Inject(WINDOW) private window) {
+  ) {
   }
 
   ngOnInit(): void {
     this.slideCount = this.images.length;
     this.slideArray = new Array(this.slideCount);
 
-    const widthFactor: number = this.getWidthFactor();
-    // Calculate aspect ratio
-    this.calculatedRatio = ImageService.calculateAspectRatioResponsive(this.ratio, widthFactor);
-    this.responsiveWidth = this.getWidth();
   }
 
   onPanStart(): void {
@@ -87,9 +70,7 @@ export class CarouselComponent implements OnInit {
       this.moveRight();
     } else {
 
-      // Calculate view percentage
-      const percentage = 100 / this.slideCount * event.deltaX / window.innerWidth;
-      const viewPercentage = percentage * this.slideCount;
+        const viewPercentage = this.calculateViewOffset(event);
 
       if (Math.sign(viewPercentage) === 1) { // Left pan move
         if (viewPercentage > this.changePercentage) {
@@ -159,64 +140,58 @@ export class CarouselComponent implements OnInit {
       this.animation = false;
     }
     this.setDeltaXPosition();
-    const widthFaxctor: number = this.getWidthFactor();
+    // const widthFaxctor: number = this.getWidthFactor();
     // Calculate aspect ratio
-    this.calculatedRatio = ImageService.calculateAspectRatioResponsive(this.ratio, widthFaxctor);
+    // this.calculatedRatio = ImageService.calculateAspectRatioResponsive(this.ratio, widthFaxctor);
   }
 
+  /**
+   * Calculate in percetnage how the user has moved with image
+   * @param event
+   * @returns {number}
+   */
+  private calculateViewOffset(event: any): number {
+    let percentage = 0;
+
+    // if (typeof window !== 'undefined') {
+      console.log('inside window')
+      // Calculate view percentage
+      percentage = 100 / this.slideCount * event.deltaX / window.innerWidth;
+    // }
+
+    return percentage * this.slideCount;
+  }
+
+  /**
+   * calcutale the offset of the slide in pixel
+   * Make keep slide
+   */
   private setDeltaXPosition() {
 
-    let widthFactore: number;
-    const windowWidth: number = window.innerWidth;
+    let windowWidth = 0;
+    let widthFactore = 0;
 
-    if (windowWidth <= 599) {
-      widthFactore = this.xsmallSize / 100;
-    } else if (windowWidth >= 600 && windowWidth <= 959) {
-      widthFactore = this.smallSize / 100;
-    } else if (windowWidth >= 960 && windowWidth <= 1279) {
-      widthFactore = this.mediumSize / 100;
-    } else if (windowWidth >= 1280 && windowWidth <= 1919) {
-      widthFactore = this.largeSize / 100;
-    } else {
-      widthFactore = this.xlargeSize / 100;
-    }
+    // if (typeof window !== 'undefined') {
+
+      console.log('inside window 2')
+       windowWidth = window.innerWidth;
+
+      if (windowWidth <= 599) {
+        widthFactore = this.xsmallSize / 100;
+      } else if (windowWidth >= 600 && windowWidth <= 959) {
+        widthFactore = this.smallSize / 100;
+      } else if (windowWidth >= 960 && windowWidth <= 1279) {
+        widthFactore = this.mediumSize / 100;
+      } else if (windowWidth >= 1280 && windowWidth <= 1919) {
+        widthFactore = this.largeSize / 100;
+      } else {
+        widthFactore = this.xlargeSize / 100;
+      }
 
     this.deltaX = -window.innerWidth * this.activeSlide * widthFactore;
     this.slidePosition = -this.deltaX;
-  }
+    // }
 
-  getWidth(): string {
-
-    const windowWidth: number = window.innerWidth;
-
-    if (windowWidth <= 599) {
-      return this.xsmallSize + 'vw';
-    } else if (windowWidth >= 600 && windowWidth <= 959) {
-      return this.smallSize + 'vw';
-    } else if (windowWidth >= 960 && windowWidth <= 1279) {
-      return this.mediumSize + 'vw';
-    } else if (windowWidth >= 1280 && windowWidth <= 1919) {
-      return this.largeSize + 'vw';
-    } else {
-      return this.xlargeSize + 'vw';
-    }
-  }
-
-  getWidthFactor(): number {
-
-    const windowWidth: number = window.innerWidth;
-
-    if (windowWidth <= 599) {
-      return this.xsmallSize / 100;
-    } else if (windowWidth >= 600 && windowWidth <= 959) {
-      return this.smallSize / 100;
-    } else if (windowWidth >= 960 && windowWidth <= 1279) {
-      return this.mediumSize / 100;
-    } else if (windowWidth >= 1280 && windowWidth <= 1919) {
-      return this.largeSize / 100;
-    } else {
-      return this.xlargeSize / 100;
-    }
   }
 
   get activeSlide(): number {

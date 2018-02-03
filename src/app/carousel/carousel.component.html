@@ -1,7 +1,7 @@
+  <!--[style.width]="getWidth()"-->
+  <!--[style.paddingTop]="calculatedRatio"-->
 <div
   style="background-color: red"
-  [style.width]="responsiveWidth"
-  [style.paddingTop]="calculatedRatio"
   class="padding-container"
   (window:resize)="onResize()">
   <div class="carousel-container">
@@ -24,8 +24,6 @@
           <img src="../../assets/right-arrow.svg" draggable="false" class="arrow" (click)="moveRight()">
         </div>
       </div>
-
-
     </div>
     <div
       [style.width]="slideCount * 100 + '%'"

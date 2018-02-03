@@ -1,11 +1,21 @@
-import {NgModule} from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CarouselComponent, WINDOW} from './carousel.component';
+import {
+  CarouselComponent
+  // , WINDOW
+} from './carousel.component';
 import {CarouselImageComponent} from './carousel-image/carousel-image.component';
 import {HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
 import {MyHammerConfig} from './hammer-config/hammer-config';
 import {LoadImageObservable} from './service/loadImageObservable';
 
+// @Injectable()
+// export class WindowWrapper extends Window{
+// }
+//
+// export function getWindow(): Window {
+//   return window;
+// }
 
 @NgModule({
   imports: [
@@ -22,11 +32,11 @@ import {LoadImageObservable} from './service/loadImageObservable';
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig
-    },
-    {
-      provide  : WINDOW,
-      useValue : window
     }
+    // {
+    //   provide: WindowWrapper,
+    //   useFactory: getWindow
+    // }
   ],
 })
 export class CarouselModule {
