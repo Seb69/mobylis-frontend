@@ -23,7 +23,7 @@ export class CarouselComponent implements OnInit {
   public loadImage = 0;
 
   // Percentage of the image slide to move image
-  @Input() changePercentage = 25;
+  @Input() changePercentage = 20;
 
   // Image size
   @Input() xsmallSize;
