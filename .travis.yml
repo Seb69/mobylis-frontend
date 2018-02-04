@@ -1,14 +1,12 @@
 language: node_js
 node_js:
-  - "8.9.1"
+  - "8.9.4"
 install: true
-cache:
-  directories:
-    - node_modules
+cache: yarn
 notifications:
   email: false
 script:
   - yarn install
   - yarn build
-  - npm install firebase-tools -g
+  - yarn add firebase-tools -g
   - firebase deploy --token "$FIREBASE_TOKEN"
