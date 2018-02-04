@@ -52,17 +52,15 @@
 
 .container {
   /* We first create a flex layout context */
-  @include flexbox();
-  @include align-items(center);
-  //@include justify-content(center);
+  display: flex;
+  align-items: center;
 
 }
 
 .input-container {
   /* We first create a flex layout context */
-  @include flexbox();
-  @include align-items(center);
-
+  display: flex;
+  align-items: center;
 }
 /* X Small screens */
 @media all and (max-width: 600px) {
