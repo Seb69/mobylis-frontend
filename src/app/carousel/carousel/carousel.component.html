@@ -1,11 +1,13 @@
-  <!--[style.width]="getWidth()"-->
-  <!--[style.paddingTop]="calculatedRatio"-->
 <div
-  style="background-color: red"
-  class="padding-container"
-  (window:resize)="onResize()">
+  style="background-color: blue"
+  class="padding-container card-container"
+  (window:resize)="onResize()"
+>
+
+  <!--[ngStyle]="calculateAspectRatioStyle(100)"-->
+
   <div class="carousel-container">
-    <div class="pan-container"
+    <div class="pan-container pointer"
          (panstart)="onPanStart()"
          (panend)="onPanEnd($event)"
          (panmove)="onPanMove($event)">
@@ -18,22 +20,26 @@
       </div>
       <div id="on-hover">
         <div id="left-arrow-container" class="arrow-container">
-          <img src="../../assets/left-arrow.svg" draggable="false" class="arrow" (click)="moveLeft()">
+          <img src="../../../assets/left-arrow.svg" draggable="false" class="arrow" (click)="moveLeft()">
         </div>
         <div id="right-arrow-container" class="arrow-container">
-          <img src="../../assets/right-arrow.svg" draggable="false" class="arrow" (click)="moveRight()">
+          <img src="../../../assets/right-arrow.svg" draggable="false" class="arrow" (click)="moveRight()">
         </div>
       </div>
     </div>
     <div
       [style.width]="slideCount * 100 + '%'"
       [style.transform]="'translateX(' + deltaX + 'px)'"
-      class="pointer"
       [ngClass]="animation ? 'animation': null">
 
       <app-responsive-image
         *ngFor="let image of images;let i = index"
         [aspectRatio]="ratio"
+        [xsmallSize]="xsmallSize + 'vw'"
+        [smallSize]="smallSize + 'vw'"
+        [mediumSize]="mediumSize + 'vw'"
+        [largeSize]="largeSize + 'vw'"
+        [xlargeSize]="xlargeSize + 'vw'"
         [index]="i"
         [image]="image"></app-responsive-image>
 

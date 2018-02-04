@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-//body {
-//  margin: 0;
-//  background: #24303D;
-//  //background: green;
-//  div {
-//    background-color: white;
-//  }
-//}
+
+// --------------------------------------------------
+// Breakpoint
+// --------------------------------------------------
+$xsmallBreakpoint: 600px;
+$smallBreakpoint: 960px;
+$mediumBreakpoint: 1280px;
+$largeBreakpoint: 1920px;
 
 // --------------------------------------------------
 // Flexbox SASS mixins

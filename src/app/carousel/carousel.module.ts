@@ -3,12 +3,12 @@ import {CommonModule} from '@angular/common';
 import {
   CarouselComponent
   // , WINDOW
-} from './carousel.component';
+} from './carousel/carousel.component';
 import {CarouselImageComponent} from './carousel-image/carousel-image.component';
 import {HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
 import {MyHammerConfig} from './hammer-config/hammer-config';
 import {LoadImageObservable} from './service/loadImageObservable';
-
+//
 // @Injectable()
 // export class WindowWrapper extends Window{
 // }
@@ -33,10 +33,6 @@ import {LoadImageObservable} from './service/loadImageObservable';
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig
     }
-    // {
-    //   provide: WindowWrapper,
-    //   useFactory: getWindow
-    // }
   ],
 })
 export class CarouselModule {

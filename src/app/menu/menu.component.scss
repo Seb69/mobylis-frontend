@@ -79,7 +79,7 @@
 }
 
 /* Small screens */
-@media all and (min-width: 600px) and (max-width: 960px){
+@media all and (min-width: 600px) and (max-width: 960px) {
   /* We tell both sidebars to share a row */
   .container {
     flex-direction: row;

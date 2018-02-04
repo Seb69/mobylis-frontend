@@ -1,9 +1,12 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {LoadImageObservable} from './service/loadImageObservable';
+import {ChangeDetectionStrategy, Component, Input, NgZone, OnInit} from '@angular/core';
+import {LoadImageObservable} from '../service/loadImageObservable';
 
 @Component({
   selector: 'app-carousel',
-  styleUrls: ['./carousel.component.scss'],
+  styleUrls: [
+    './carousel.component.scss',
+    './carousel-size.component.scss',
+    './carousel-navigation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './carousel.component.html',
 })
@@ -23,14 +26,14 @@ export class CarouselComponent implements OnInit {
   @Input() changePercentage = 25;
 
   // Image size
-  @Input() xsmallSize? = 100;
-  @Input() smallSize? = 50;
-  @Input() mediumSize? = 25;
-  @Input() largeSize? = 20;
-  @Input() xlargeSize? = 15;
+  @Input() xsmallSize;
+  @Input() smallSize;
+  @Input() mediumSize;
+  @Input() largeSize;
+  @Input() xlargeSize;
 
   // Aspect ratio of the image
-  @Input() ratio = '1:1';
+  @Input() ratio;
 
   // Image of the carousel
   @Input() images: string[];
@@ -70,6 +73,7 @@ export class CarouselComponent implements OnInit {
     } else {
 
       const viewPercentage = this.calculateViewOffset(event);
+      console.log(viewPercentage);
 
       if (Math.sign(viewPercentage) === 1) { // Left pan move
         if (viewPercentage > this.changePercentage) {
@@ -150,7 +154,23 @@ export class CarouselComponent implements OnInit {
 
     percentage = 100 / this.slideCount * event.deltaX / window.innerWidth;
 
-    return percentage * this.slideCount;
+    return percentage * this.slideCount * (100 / this.getWidth());
+  }
+
+  getWidth(): number {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth <= 599) {
+      return this.xsmallSize;
+    } else if (windowWidth >= 600 && windowWidth <= 959) {
+      return this.smallSize;
+    } else if (windowWidth >= 960 && windowWidth <= 1279) {
+      return this.mediumSize;
+    } else if (windowWidth >= 1280 && windowWidth <= 1919) {
+      return this.largeSize;
+    } else {
+      return this.xlargeSize;
+    }
   }
 
   /**

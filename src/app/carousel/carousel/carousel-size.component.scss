@@ -1,0 +1,51 @@
+@import '../carousel.variable';
+@import '../../../styles';
+
+.card-container {
+
+}
+
+/* X Small screens */
+@media all and (max-width: 600px){
+  /* We tell both sidebars to share a row */
+  .card-container {
+    width: $xsmallSize;
+    padding-top: (($ratioHeight / $ratioWidth) * 100 ) +%;
+  }
+}
+
+/* Small screens */
+@media all and (min-width: 600px) and (max-width: 960px) {
+  /* We tell both sidebars to share a row */
+  .card-container {
+    width: $smallSize;
+    padding-top: (($ratioHeight / $ratioWidth) * 100) +%;
+  }
+}
+
+/* Medium screens */
+@media all and (min-width: 960px) and (max-width: 1280px) {
+  /* We tell both sidebars to share a row */
+  .card-container {
+    width: $mediumSize;
+    padding-top: (($ratioHeight / $ratioWidth)  * 100 ) +%;
+  }
+}
+
+/* Large screens */
+@media all and (min-width: 1280px) and (max-width: 1919px) {
+  /* We tell both sidebars to share a row */
+  .card-container {
+    width: $largeSize;
+    padding-top: (($ratioHeight / $ratioWidth)  * 100 ) +%;
+  }
+}
+
+/* Large screens */
+@media all and (min-width: 1919px) {
+  /* We tell both sidebars to share a row */
+  .card-container {
+    width: $xlargeSize;
+    padding-top: (($ratioHeight / $ratioWidth)  * 100) +%;
+  }
+}

@@ -11,11 +11,13 @@ import {CoreModule} from './core/core.module';
 import {CarouselModule} from './carousel/carousel.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {CarouselCardComponent} from './carousel-card/carousel-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    CarouselCardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

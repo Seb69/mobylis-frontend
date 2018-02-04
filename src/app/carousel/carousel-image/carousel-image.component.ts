@@ -14,11 +14,14 @@ export class CarouselImageComponent implements OnInit, OnDestroy {
   @Input() image: string;
 
   // Image size
-  @Input() xsmallSize? = '100vw';
-  @Input() smallSize? = '50vw';
-  @Input() mediumSize? = '25vw';
-  @Input() largeSize? = '20vw';
-  @Input() xlargeSize? = '15vw';
+  @Input() xsmallSize;
+  @Input() smallSize?;
+  @Input() mediumSize?;
+  @Input() largeSize?;
+  @Input() xlargeSize?;
+
+  // Size unit
+  @Input() sizeUnit? = 'vw';
 
   // Aspect ratio
   @Input() aspectRatio? = '1:1';
