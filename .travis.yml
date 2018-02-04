@@ -8,7 +8,7 @@ cache:
 notifications:
   email: false
 script:
-  - npm install
-  - ng build --prod
+  - yarn install
+  - yarn build
   - npm install firebase-tools -g
   - firebase deploy --token "$FIREBASE_TOKEN"

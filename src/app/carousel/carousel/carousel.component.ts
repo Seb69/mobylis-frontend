@@ -73,7 +73,6 @@ export class CarouselComponent implements OnInit {
     } else {
 
       const viewPercentage = this.calculateViewOffset(event);
-      console.log(viewPercentage);
 
       if (Math.sign(viewPercentage) === 1) { // Left pan move
         if (viewPercentage > this.changePercentage) {

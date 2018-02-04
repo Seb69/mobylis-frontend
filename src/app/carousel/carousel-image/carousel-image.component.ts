@@ -64,7 +64,6 @@ export class CarouselImageComponent implements OnInit, OnDestroy {
   }
 
   get sourceSet(): string {
-    console.log('CHANGE DETECTION');
     return this._sourceSet;
   }
 
