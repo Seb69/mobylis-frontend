@@ -143,7 +143,6 @@ export class CarouselComponent implements OnInit {
             this.loadImage = loadImageTemp;
             this.ref.detectChanges();
           }, 300);
-
         }
       );
     }
