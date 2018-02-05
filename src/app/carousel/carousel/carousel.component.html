@@ -2,11 +2,9 @@
   class="padding-container card-container"
   (window:resize)="onResize()"
 >
-
-  <!--[ngStyle]="calculateAspectRatioStyle(100)"-->
-
   <div class="carousel-container">
     <div class="pan-container pointer"
+         (mouseenter)="mouseHover()"
          (panstart)="onPanStart()"
          (panend)="onPanEnd($event)"
          (panmove)="onPanMove($event)">
@@ -19,10 +17,10 @@
       </div>
       <div id="on-hover">
         <div id="left-arrow-container" class="arrow-container">
-          <img src="../../../assets/left-arrow.svg" draggable="false" class="arrow" (click)="moveLeft()">
+          <img src="https://res.cloudinary.com/dqismn81g/image/upload/left-arrow_ifj76w.svg" draggable="false" class="arrow" (click)="moveLeft()">
         </div>
         <div id="right-arrow-container" class="arrow-container">
-          <img src="../../../assets/right-arrow.svg" draggable="false" class="arrow" (click)="moveRight()">
+          <img src="https://res.cloudinary.com/dqismn81g/image/upload/v1517782845/right-arrow_w8iwin.svg" draggable="false" class="arrow" (click)="moveRight()">
         </div>
       </div>
     </div>
@@ -40,6 +38,7 @@
         [largeSize]="largeSize + 'vw'"
         [xlargeSize]="xlargeSize + 'vw'"
         [index]="i"
+        [loadImage]="loadImage"
         [image]="image"></app-responsive-image>
 
     </div>

@@ -1,12 +1,11 @@
-import {ChangeDetectionStrategy, Component, Input, NgZone, OnInit} from '@angular/core';
-import {LoadImageObservable} from '../service/loadImageObservable';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, NgZone, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
   styleUrls: [
-    './carousel.component.scss',
-    './carousel-size.component.scss',
-    './carousel-navigation.component.scss'],
+    './styles/carousel.component.scss',
+    './styles/carousel-size.component.scss',
+    './styles/carousel-navigation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './carousel.component.html',
 })
@@ -40,13 +39,24 @@ export class CarouselComponent implements OnInit {
 
   public calculatedRatio;
 
-  constructor(private loadImageObservable: LoadImageObservable) {
+  constructor(private ref: ChangeDetectorRef, private zone: NgZone) {
   }
 
   ngOnInit(): void {
     this.slideCount = this.images.length;
     this.slideArray = new Array(this.slideCount);
 
+  }
+
+  mouseHover() {
+
+    // LAZY Load
+    // Check whether the user remain on the same image
+    // If the user reach the last image => not increment loadImage
+    // if (this.activeSlide === this.loadImage && this.activeSlide < this.slideCount - 1) {
+    if (this.activeSlide === 0 && this.loadImage < 1) {
+      this.loadImage += 1;
+    }
   }
 
   onPanStart(): void {
@@ -58,8 +68,9 @@ export class CarouselComponent implements OnInit {
     // If the user reach the last image => not increment loadImage
     // if (this.activeSlide === this.loadImage && this.activeSlide < this.slideCount - 1) {
     if (this.activeSlide === 0 && this.loadImage < 1) {
+      console.log('ON START MOVE ');
       this.loadImage += 1;
-      this.loadImageObservable.changeValue(this.loadImage);
+      // this.loadImageObservable.changeValue(this.loadImage);
     }
   }
 
@@ -106,22 +117,37 @@ export class CarouselComponent implements OnInit {
   moveRight() {
     // Start animation
     this.animation = true;
-    // Last slide
-    if (this.activeSlide === this.slideCount - 1) {
-    } else { // Not the last slide
+
+    const loadImage = this.loadImage;
+    let loadImageTemp = this.loadImage;
+    // Not the last slide
+    if (this.activeSlide !== this.slideCount - 1) {
       // Check if the loadImage is the last one or not
       if (this.loadImage !== this.slideCount) {
         // If first lazy load slide => load the following one
         if (this.loadImage === 0) {
-          this.loadImage += 2;
+          loadImageTemp += 2;
         } else {
-          this.loadImage += 1;
+          loadImageTemp += 1;
         }
-        this.loadImageObservable.changeValue(this.loadImage);
       }
+
       this.activeSlide = this.activeSlide + 1;
     }
     this.setDeltaXPosition();
+
+    // wait while animation finished
+    if (loadImage !== loadImageTemp) {
+      this.zone.run(() => {
+          setTimeout(() => {
+            this.loadImage = loadImageTemp;
+            this.ref.detectChanges();
+          }, 300);
+
+        }
+      );
+    }
+
   }
 
   moveLeft() {
@@ -217,4 +243,3 @@ export class CarouselComponent implements OnInit {
   }
 
 }
-

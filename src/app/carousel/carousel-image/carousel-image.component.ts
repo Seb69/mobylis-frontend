@@ -1,7 +1,5 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {ImageService} from '../../core/image/image.service';
-import {LoadImageObservable} from '../service/loadImageObservable';
-import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-responsive-image',
@@ -9,7 +7,7 @@ import {Subscription} from 'rxjs/Subscription';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./carousel-image.component.scss']
 })
-export class CarouselImageComponent implements OnInit, OnDestroy {
+export class CarouselImageComponent implements OnInit {
 
   @Input() image: string;
 
@@ -27,8 +25,9 @@ export class CarouselImageComponent implements OnInit, OnDestroy {
   @Input() aspectRatio? = '1:1';
 
   // Image index in the carousel
-  public loadImage = 0;
   @Input() index;
+
+  private _loadImage;
 
   smallBreakpoint = '599px';
   mediumBreakpoint = '959px';
@@ -38,32 +37,19 @@ export class CarouselImageComponent implements OnInit, OnDestroy {
   private _sourceSet: string;
   private _calculatedRatio: string;
 
-  private subscription: Subscription;
-
-  constructor(private imageService: ImageService, private loadImageObservale: LoadImageObservable, private cd: ChangeDetectorRef) {
+  constructor(private imageService: ImageService, private ref: ChangeDetectorRef) {
+    ref.detach();
   }
 
   ngOnInit() {
     // Generate source set string
     this.sourceSet = this.imageService.generateCarouselUrl(this.image, this.aspectRatio);
+    this.ref.detectChanges();
 
-    this.subscription = this.loadImageObservale.getValue().subscribe(loadImage => {
-      if (this.index <= loadImage) {
-        // Update load image
-        this.loadImage = loadImage;
-        // Trigger Change detection
-        this.cd.markForCheck();
-        // No need to subscribe anymore
-        this.subscription.unsubscribe();
-      }
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   get sourceSet(): string {
+    console.log('Load image CD source set');
     return this._sourceSet;
   }
 
@@ -77,5 +63,18 @@ export class CarouselImageComponent implements OnInit, OnDestroy {
 
   set calculatedRatio(value: string) {
     this._calculatedRatio = value;
+  }
+
+  get loadImage() {
+    return this._loadImage;
+  }
+
+  @Input()
+  set loadImage(value) {
+    console.log('Load image CD');
+    this._loadImage = value;
+    if (this._loadImage <= this.index && value !== 0 ) {
+      this.ref.detectChanges();
+    }
   }
 }
