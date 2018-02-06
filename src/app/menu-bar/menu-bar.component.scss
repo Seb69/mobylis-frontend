@@ -1,0 +1,115 @@
+@import '../../styles.scss';
+
+#menu-bar-container {
+  margin-top: 1em;
+  width: 100%;
+  min-height: 4em;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+
+  background-color: white;
+
+}
+
+.category {
+  width: (100/7) + vw;
+  padding: 1.2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  font-family: 'Reem Kufi', sans-serif;
+
+  border: 0 solid #e1e1e1;
+  border-right-width: 1px;
+  border-left-width: 0;
+  //box-shadow: 0 0 2px 0 rgb(250, 0, 88);
+
+  color:  #24303D;
+}
+
+.single-word {
+  padding: 0;
+}
+
+.category:hover {
+  background-color: whitesmoke;
+}
+
+#last-tab {
+  margin-right: auto;
+}
+
+.tab {
+  height: 100%;
+}
+
+.contact {
+  justify-self: flex-end;
+}
+
+@media all and (max-width: $xsmallBreakpoint) {
+
+  #menu-bar-container {
+    flex-direction: column;
+  }
+
+  .category {
+    width: 100%;
+    padding: 2vw;
+  }
+
+  .contact {
+    border: 0 solid #e1e1e1;
+    border-left-width: 1px;
+  }
+}
+
+@media all and (min-width: $xsmallBreakpoint) and (max-width: $smallBreakpoint) {
+  #menu-bar-container {
+  }
+
+  .contact {
+    border: 0 solid #e1e1e1;
+    border-left-width: 1px;
+  }
+}
+
+@media all and (min-width: $smallBreakpoint) and (max-width: $mediumBreakpoint) {
+  .category {
+    width: 12vw;
+  }
+
+  .contact {
+    border: 0 solid #e1e1e1;
+    border-left-width: 1px;
+  }
+}
+
+@media all and (min-width: $mediumBreakpoint) and (max-width: $largeBreakpoint) {
+
+  .category {
+    width: 10vw;
+  }
+
+  .contact {
+    border: 0 solid #e1e1e1;
+    border-left-width: 1px;
+  }
+}
+
+@media all and (min-width: $largeBreakpoint) {
+  .category {
+    width: 10vw;
+  }
+
+  .contact {
+    border: 0 solid #e1e1e1;
+    border-left-width: 1px;
+  }
+}
