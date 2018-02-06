@@ -11,11 +11,6 @@
       },
       "root": "src",
       "outDir": "dist",
-      "assets": [
-        "assets",
-        "manifest.json",
-        "favicon.ico"
-      ],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
