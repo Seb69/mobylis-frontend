@@ -33,13 +33,25 @@
   color:  #24303D;
 }
 
-.single-word {
-  padding: 0;
+.active-tab {
+  background-color: #24303D;
+  color: white;
 }
 
 .category:hover {
   background-color: whitesmoke;
 }
+
+.active-tab:hover {
+  background-color: #24303D;
+  color: white;
+}
+
+.single-word {
+  padding: 0;
+}
+
+
 
 #last-tab {
   margin-right: auto;
