@@ -71,7 +71,6 @@ export class CarouselImageComponent implements OnInit {
 
   @Input()
   set loadImage(value) {
-    console.log('Load image CD');
     this._loadImage = value;
     if (this._loadImage <= this.index && value !== 0 ) {
       this.ref.detectChanges();
