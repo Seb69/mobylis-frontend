@@ -1,4 +1,4 @@
-import {BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig} from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,12 +13,26 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {CarouselCardComponent} from './carousel-card/carousel-card.component';
 import {MenuBarComponent} from './menu-bar/menu-bar.component';
+import {HomePageComponent} from './home-page/home-page.component';
+import {SeatPageComponent} from './seat-page/seat-page.component';
+import {AccessoryPageComponent} from './accessory-page/accessory-page.component';
+import {TableComponent} from './table/table.component';
+import {DeskComponent} from './desk/desk.component';
+import {PrestationComponent} from './prestation/prestation.component';
+import {ContactComponent} from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     CarouselCardComponent,
+    HomePageComponent,
+    SeatPageComponent,
+    AccessoryPageComponent,
+    TableComponent,
+    DeskComponent,
+    PrestationComponent,
+    ContactComponent,
     MenuBarComponent
   ],
   imports: [
@@ -26,7 +40,6 @@ import {MenuBarComponent} from './menu-bar/menu-bar.component';
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     AppRoutingModule,
     CoreModule,
-    // StyleModule,
     ImageModule,
     CarouselModule,
     RouterModule

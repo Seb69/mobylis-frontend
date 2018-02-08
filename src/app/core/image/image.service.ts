@@ -29,15 +29,6 @@ export class ImageService {
     return String((height / width) * 100).concat('%');
   }
 
-  // static calculateAspectRatioResponsive(ratio: string, widthFactor): string {
-  //
-  //   const ratioArray: string[] = ratio.split(':');
-  //   const width: number = +ratioArray[0];
-  //   const height: number = +ratioArray[1];
-  //
-  //   return String((height / width) * 100 * widthFactor).concat('%');
-  // }
-
   constructor() {
   }
 

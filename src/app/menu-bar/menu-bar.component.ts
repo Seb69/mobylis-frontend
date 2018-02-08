@@ -5,15 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './menu-bar.component.html',
   styleUrls: ['./menu-bar.component.scss']
 })
-export class MenuBarComponent implements OnInit {
+export class MenuBarComponent {
 
   private _selectedTab: string;
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 
   public onSelect(tabName: string) {
     this.selectedTab = tabName;

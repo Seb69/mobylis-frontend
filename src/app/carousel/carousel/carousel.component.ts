@@ -125,9 +125,9 @@ export class CarouselComponent implements OnInit {
       // Check if the loadImage is the last one or not
       if (this.loadImage !== this.slideCount) {
         // If first lazy load slide => load the following one
-        if (this.loadImage === 0) {
+        if (this.loadImage === 0 ) {
           loadImageTemp += 2;
-        } else {
+        } else if (this.loadImage - 1 === this.activeSlide ) {
           loadImageTemp += 1;
         }
       }
@@ -137,6 +137,10 @@ export class CarouselComponent implements OnInit {
     this.setDeltaXPosition();
 
     // wait while animation finished
+    console.log('Active slide ' + this.activeSlide);
+    console.log('Load image ' + this.loadImage);
+    console.log('Load image temp ' + loadImageTemp);
+
     if (loadImage !== loadImageTemp) {
       this.zone.run(() => {
           setTimeout(() => {

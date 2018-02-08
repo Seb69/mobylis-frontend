@@ -6,7 +6,7 @@
 }
 
 /* X Small screens */
-@media all and (max-width: 600px){
+@media all and (max-width: $xsmallBreakpoint){
   /* We tell both sidebars to share a row */
   .card-container {
     width: $xsmallSize;
@@ -15,7 +15,7 @@
 }
 
 /* Small screens */
-@media all and (min-width: 600px) and (max-width: 960px) {
+@media all and (min-width: $xsmallBreakpoint) and (max-width: $smallBreakpoint) {
   /* We tell both sidebars to share a row */
   .card-container {
     width: $smallSize;
@@ -24,7 +24,7 @@
 }
 
 /* Medium screens */
-@media all and (min-width: 960px) and (max-width: 1280px) {
+@media all and (min-width: $smallBreakpoint) and (max-width: $mediumBreakpoint) {
   /* We tell both sidebars to share a row */
   .card-container {
     width: $mediumSize;
@@ -33,7 +33,7 @@
 }
 
 /* Large screens */
-@media all and (min-width: 1280px) and (max-width: 1919px) {
+@media all and (min-width: $mediumBreakpoint) and (max-width: $largeBreakpoint) {
   /* We tell both sidebars to share a row */
   .card-container {
     width: $largeSize;
@@ -42,7 +42,7 @@
 }
 
 /* X Large screens */
-@media all and (min-width: 1919px) {
+@media all and (min-width: $largeBreakpoint) {
   /* We tell both sidebars to share a row */
   .card-container {
     width: $xlargeSize;

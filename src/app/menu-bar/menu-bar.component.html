@@ -1,21 +1,27 @@
 <div id="menu-bar-container">
 
-<div class="category single-word" (click)="onSelect('seat')" [ngClass]="selectedTab === 'seat' ? 'active-tab' : ''">
+<div class="category single-word"
+     routerLink="/siege" routerLinkActive="active">
     Sièges
   </div>
-  <div class="category" (click)="onSelect('accessory')" [ngClass]="selectedTab === 'accessory' ? 'active-tab' : ''">
+  <div class="category"
+       routerLink="/accessoire" routerLinkActive="active">
     Accessoires érgonomiques
   </div>
-  <div class="category" (click)="onSelect('table')" [ngClass]="selectedTab === 'table' ? 'active-tab' : ''">
+  <div class="category"
+       routerLink="/table" routerLinkActive="active">
     Bureaux réglables en hauteur
   </div>
-  <div class="category" (click)="onSelect('desk')" [ngClass]="selectedTab === 'desk' ? 'active-tab' : ''">
+  <div class="category"
+       routerLink="/bureaux" routerLinkActive="active">
     Mobilier de Bureau
   </div>
-  <div class="category single-word" id="last-tab" (click)="onSelect('prestation')" [ngClass]="selectedTab === 'prestation' ? 'active-tab' : ''">
+  <div class="category single-word" id="last-tab"
+       routerLink="/prestation" routerLinkActive="active">
     Prestation
   </div>
-  <div class="category contact" (click)="onSelect('contact')" [ngClass]="selectedTab === 'contact' ? 'active-tab' : ''">
+  <div class="category contact"
+       routerLink="/contact" routerLinkActive="active">
     Nous Contacter
   </div>
 </div>

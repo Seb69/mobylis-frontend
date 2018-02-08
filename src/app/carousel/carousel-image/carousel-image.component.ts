@@ -49,7 +49,6 @@ export class CarouselImageComponent implements OnInit {
   }
 
   get sourceSet(): string {
-    console.log('Load image CD source set');
     return this._sourceSet;
   }
 

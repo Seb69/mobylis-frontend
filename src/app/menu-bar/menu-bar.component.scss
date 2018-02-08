@@ -33,13 +33,24 @@
   color:  #24303D;
 }
 
-.active-tab {
+//.active-tab {
+//  background-color: #24303D;
+//  color: white;
+//}
+.active {
+  //background-color: red;
   background-color: #24303D;
   color: white;
 }
 
 .category:hover {
   background-color: whitesmoke;
+}
+
+.active:hover {
+  //background-color: red;
+  background-color: #24303D;
+  color: white;
 }
 
 .active-tab:hover {
