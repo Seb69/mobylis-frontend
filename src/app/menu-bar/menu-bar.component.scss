@@ -2,7 +2,7 @@
 
 #menu-bar-container {
   margin-top: 1em;
-  width: 100%;
+  width: 100vw;
   min-height: 4em;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
 
@@ -10,6 +10,7 @@
   flex-flow: row wrap;
   justify-content: flex-start;
 
+  overflow: hidden;
   background-color: white;
 
 }
@@ -28,7 +29,6 @@
   border: 0 solid #e1e1e1;
   border-right-width: 1px;
   border-left-width: 0;
-  //box-shadow: 0 0 2px 0 rgb(250, 0, 88);
 
   color:  #24303D;
 }
@@ -83,7 +83,7 @@
   }
 
   .category {
-    width: 100%;
+    width: 100vw;
     padding: 2vw;
   }
 
@@ -94,8 +94,6 @@
 }
 
 @media all and (min-width: $xsmallBreakpoint) and (max-width: $smallBreakpoint) {
-  #menu-bar-container {
-  }
 
   .contact {
     border: 0 solid #e1e1e1;

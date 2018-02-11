@@ -1,11 +1,9 @@
-<div
-  class="aspect-ratio center"
-  [style.padding-bottom]="calculatedRatio">
-  <img
+<img
   *ngIf="lazyLoad"
   [useSrcset]="true"
   [lazyLoad]="sourceSet"
   [offset]="offset"
+  draggable="false"
   sizes="
   (max-width: {{smallBreakpoint}}) {{xsmallSize}},
   (max-width: {{mediumBreakpoint}}) {{smallSize}},
@@ -13,14 +11,14 @@
   (max-width: {{xlargeBreakpoint}}) {{largeSize}},
   {{xlargeSize}}"
   src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-  <img
-    *ngIf="!lazyLoad"
-    [srcset]="sourceSet"
-    sizes="
+<img
+  *ngIf="!lazyLoad"
+  draggable="false"
+  [srcset]="sourceSet"
+  sizes="
   (max-width: {{smallBreakpoint}}) {{xsmallSize}},
   (max-width: {{mediumBreakpoint}}) {{smallSize}},
   (max-width: {{largeBreakpoint}}) {{mediumSize}},
   (max-width: {{xlargeBreakpoint}}) {{largeSize}},
   {{xlargeSize}}"
-    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-</div>
+  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">

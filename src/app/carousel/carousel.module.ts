@@ -1,4 +1,4 @@
-import {Injectable, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CarouselComponent} from './carousel/carousel.component';
 import {CarouselImageComponent} from './carousel-image/carousel-image.component';

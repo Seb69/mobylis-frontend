@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {ImageService} from '../core/image/image.service';
+import {ImageService} from '../../core/image/image.service';
 
 @Component({
   selector: 'app-image',
@@ -20,14 +20,11 @@ export class ImageComponent implements OnInit {
 
   // Aspect Ratio
   // Need for pre load
-  @Input() ratio: string;
+  @Input() ratio = '1:1';
 
-  // Lazy load
+  // Lazy load settings
   @Input() lazyLoad: Boolean = true;
   @Input() offset = 0;
-
-  // Auto heigth
-  @Input() autoHeight: Boolean = true;
 
   smallBreakpoint = '599px';
   mediumBreakpoint = '959px';
@@ -35,7 +32,6 @@ export class ImageComponent implements OnInit {
   xlargeBreakpoint = '1919px';
 
   private _sourceSet: string;
-  private _calculatedRatio: string;
 
   constructor(private imageService: ImageService) {
   }
@@ -43,11 +39,6 @@ export class ImageComponent implements OnInit {
   ngOnInit() {
     // Generate source set string
     this.sourceSet = this.imageService.generateUrl(this.image);
-
-    if (this.autoHeight) {
-      // Calculation aspect ratio in order to keep
-      this.calculatedRatio = ImageService.calculateAspectRatio(this.ratio);
-    }
   }
 
   get sourceSet(): string {
@@ -56,14 +47,6 @@ export class ImageComponent implements OnInit {
 
   set sourceSet(value: string) {
     this._sourceSet = value;
-  }
-
-  get calculatedRatio(): string {
-    return this._calculatedRatio;
-  }
-
-  set calculatedRatio(value: string) {
-    this._calculatedRatio = value;
   }
 
 }

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import {MenuComponent} from './menu/menu.component';
-import {ImageModule} from './image/image.module';
 import {CoreModule} from './core/core.module';
 import {CarouselModule} from './carousel/carousel.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -20,6 +19,8 @@ import {TableComponent} from './table/table.component';
 import {DeskComponent} from './desk/desk.component';
 import {PrestationComponent} from './prestation/prestation.component';
 import {ContactComponent} from './contact/contact.component';
+import {CategoryComponent} from './category/category.component';
+import { ImageModule} from './image/image.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {ContactComponent} from './contact/contact.component';
     AccessoryPageComponent,
     TableComponent,
     DeskComponent,
+    CategoryComponent,
     PrestationComponent,
     ContactComponent,
     MenuBarComponent

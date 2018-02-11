@@ -29,6 +29,7 @@ export class ImageService {
     return String((height / width) * 100).concat('%');
   }
 
+
   constructor() {
   }
 
