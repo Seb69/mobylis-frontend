@@ -137,10 +137,6 @@ export class CarouselComponent implements OnInit {
     this.setDeltaXPosition();
 
     // wait while animation finished
-    console.log('Active slide ' + this.activeSlide);
-    console.log('Load image ' + this.loadImage);
-    console.log('Load image temp ' + loadImageTemp);
-
     if (loadImage !== loadImageTemp) {
       this.zone.run(() => {
           setTimeout(() => {

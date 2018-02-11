@@ -1,5 +1,12 @@
 @import '../../styles.scss';
-
+#category-name {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+  text-align: center;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 3em;
+}
 #item-container {
 
   width: 100%;
@@ -13,7 +20,6 @@
   align-content: flex-start;
 
   // add space at the top and bottom of items
-  padding-top: 1em;
   padding-bottom: 1em;
 
 }

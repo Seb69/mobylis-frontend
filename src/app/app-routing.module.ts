@@ -3,16 +3,37 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomePageComponent} from './home-page/home-page.component';
 import {AccessoryPageComponent} from './accessory-page/accessory-page.component';
 import {SeatPageComponent} from './seat-page/seat-page.component';
-import {TableComponent} from './table/table.component';
 import {DeskComponent} from './desk/desk.component';
 import {PrestationComponent} from './prestation/prestation.component';
 import {ContactComponent} from './contact/contact.component';
+import {CarouselCardComponent} from './carousel-card/carousel-card.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
-  {path: 'siege', component: SeatPageComponent},
-  {path: 'accessoire', component: AccessoryPageComponent},
-  {path: 'table', component: TableComponent},
+  {path: 'siege',
+    children: [
+      {
+        path: '',
+        component: SeatPageComponent
+      },
+      {
+        path: ':categoryName',
+        component: CarouselCardComponent
+      }
+    ]},
+  {path: 'carousel', component: CarouselCardComponent},
+  {path: 'accessoire',
+    children: [
+      {
+        path: '',
+        component: AccessoryPageComponent
+      },
+      {
+        path: ':categoryName',
+        component: CarouselCardComponent
+      }
+    ]},
+  {path: 'table', component: CarouselCardComponent},
   {path: 'bureaux', component: DeskComponent},
   {path: 'prestation', component: PrestationComponent},
   {path: 'contact', component: ContactComponent}

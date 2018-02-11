@@ -7,10 +7,8 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import {MenuComponent} from './menu/menu.component';
 import {CoreModule} from './core/core.module';
-import {CarouselModule} from './carousel/carousel.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import {CarouselCardComponent} from './carousel-card/carousel-card.component';
 import {MenuBarComponent} from './menu-bar/menu-bar.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {SeatPageComponent} from './seat-page/seat-page.component';
@@ -21,12 +19,12 @@ import {PrestationComponent} from './prestation/prestation.component';
 import {ContactComponent} from './contact/contact.component';
 import {CategoryComponent} from './category/category.component';
 import { ImageModule} from './image/image.module';
+import {CarouselCardModule} from './carousel-card/carousel-card.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    CarouselCardComponent,
     HomePageComponent,
     SeatPageComponent,
     AccessoryPageComponent,
@@ -42,8 +40,8 @@ import { ImageModule} from './image/image.module';
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     AppRoutingModule,
     CoreModule,
+    CarouselCardModule,
     ImageModule,
-    CarouselModule,
     RouterModule
   ],
   providers: [
