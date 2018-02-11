@@ -18,6 +18,9 @@ export class CarouselComponent implements OnInit {
   private _activeSlide = 0;
   public slidePosition = 0;
 
+  private startTime: number;
+  private endTime: number;
+
   // Lazy load
   public loadImage = 0;
 
@@ -114,7 +117,7 @@ export class CarouselComponent implements OnInit {
     this.setDeltaXPosition();
   }
 
-  moveRight() {
+  moveRight(event?: any) {
     // Start animation
     this.animation = true;
 
@@ -149,7 +152,12 @@ export class CarouselComponent implements OnInit {
 
   }
 
-  moveLeft() {
+  onTap(event: any) {
+    console.log('on tap ');
+  }
+
+  moveLeft(event?: any) {
+    console.log('move left');
     // Start animation
     this.animation = true;
 

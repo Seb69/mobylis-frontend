@@ -22,6 +22,8 @@
   // add space at the top and bottom of items
   padding-bottom: 1em;
 
+  cursor: pointer;
+
 }
 
 .item {
@@ -68,4 +70,22 @@
 
 .item:hover {
   box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.item-description {
+  padding: 1em;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.item-price {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 1em;
+  text-align: center;
+  color: #25303D;
+
 }

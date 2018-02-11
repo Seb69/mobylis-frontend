@@ -20,10 +20,6 @@
 .arrow-container {
   width: 20%;
   height: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 #right-arrow-container {
@@ -39,11 +35,56 @@
     rgba(255, 0, 0, 0));
 }
 
-.arrow {
-  width: 45%;
-  cursor: pointer;
+.right-side-container {
+  right: 0;
 }
 
+.central-column {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: stretch;
+}
+
+.arrow-image-container {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.side-container {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+
+  z-index: 3;
+
+  display: flex;
+  align-content: stretch;
+  justify-content: stretch;
+  flex-direction: row;
+}
+
+.arrow {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
+
+.side-width {
+  width: 25%;
+}
+
+.above-bellow {
+  height: 40%;
+}
+
+/**
+PAGINATION STYLING
+ */
 #pagination {
   position: absolute;
 
@@ -75,4 +116,8 @@
   background-color: black;
   opacity: 0.3;
 }
+
+
+
+
 

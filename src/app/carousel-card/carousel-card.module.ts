@@ -13,6 +13,8 @@ import {CarouselModule} from '../carousel/carousel.module';
   ],
   exports: [
     CarouselCardComponent
+  ],
+  providers: [
   ]
 })
 export class CarouselCardModule {

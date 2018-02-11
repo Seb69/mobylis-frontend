@@ -1,7 +1,6 @@
 <div
   class="padding-container card-container"
-  (window:resize)="onResize()"
->
+  (window:resize)="onResize()">
   <div class="carousel-container">
     <div class="pan-container pointer"
          (mouseenter)="mouseHover()"
@@ -16,11 +15,50 @@
         </div>
       </div>
       <div id="on-hover">
-        <div id="left-arrow-container" class="arrow-container">
-          <img src="https://res.cloudinary.com/dqismn81g/image/upload/left-arrow_ifj76w.svg" draggable="false" class="arrow" (click)="moveLeft()">
+        <div id="left-arrow-container" class="arrow-container side-gradient">
         </div>
-        <div id="right-arrow-container" class="arrow-container">
-          <img src="https://res.cloudinary.com/dqismn81g/image/upload/v1517782845/right-arrow_w8iwin.svg" draggable="false" class="arrow" (click)="moveRight()">
+
+        <div class="side-container">
+          <!-- Left side -->
+          <div class="side-width" (tap)="onTap($event)"></div>
+          <!-- Main side -->
+          <div class="central-column">
+            <!-- Top side -->
+            <div class="above-bellow" (tap)="onTap($event)"></div>
+            <!-- Arrow container -->
+            <div class="arrow-image-container">
+              <img src="https://res.cloudinary.com/dqismn81g/image/upload/left-arrow_ifj76w.svg"
+                   draggable="false" class="arrow" (tap)="moveLeft($event)">
+            </div>
+            <!-- Bottom side -->
+            <div class="above-bellow" (tap)="onTap($event)"></div>
+          </div>
+          <!-- Right side -->
+          <div class="side-width" (tap)="onTap($event)"></div>
+        </div>
+
+        <div style="background-color: red; width: 60%; height: 100%" (tap)="onTap($event)"></div>
+
+        <div class="right-side-container side-container">
+          <!-- Left side -->
+          <div class="side-width" (tap)="onTap($event)"></div>
+          <!-- Main side -->
+          <div class="central-column">
+            <!-- Top side -->
+            <div class="above-bellow" (tap)="onTap($event)"></div>
+            <!-- Arrow container -->
+            <div class="arrow-image-container">
+              <img src="https://res.cloudinary.com/dqismn81g/image/upload/v1517782845/right-arrow_w8iwin.svg"
+                   draggable="false" class="arrow" (tap)="moveRight($event)">
+            </div>
+            <!-- Bottom side -->
+            <div class="above-bellow" (tap)="onTap($event)"></div>
+          </div>
+          <!-- Right side -->
+          <div class="side-width" (tap)="onTap($event)"></div>
+        </div>
+
+        <div id="right-arrow-container" class="arrow-container side-gradient">
         </div>
       </div>
     </div>

@@ -26,7 +26,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
    */
   // events = event.preventDefault();
   overrides = <any>{
-    'pan': {threshold: 0, direction: 6} // override default settings
+    'pan': {threshold: 0, direction: 6}, // override default settings
+    'tap': {time: 500}
   };
 
 
