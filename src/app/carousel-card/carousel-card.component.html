@@ -1,8 +1,8 @@
-<div id="category-name">
+<div id="category-name" (tap)="onTap()" (panstart)="panStart()">
   {{categoryName}}
 </div>
-<div id="item-container">
-  <div class="item" *ngFor="let product of products" >
+<div id="item-container" >
+  <div class="item" *ngFor="let product of products">
     <app-carousel ratio="3:2"
                   sizeUnit="vw"
                   xsmallSize="95"
@@ -11,9 +11,9 @@
                   [largeSize]="23"
                   [xlargeSize]="23"
                   [images]="product.images"
+                  (onVoted)="onVote($event)"
     ></app-carousel>
     <div class="item-description"> {{product.name}} </div>
     <div class="item-price"> {{product.price | currency:'EUR':true:'0.0-1'}} </div>
   </div>
 </div>
-

@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {Product} from '../core/model/product';
 
@@ -14,11 +14,17 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
 
   @Input() products: Array<Product>;
 
-  sub: Subscription;
+  private sub: Subscription;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
   }
 
+  onTap() {
+    console.log('on tab');
+  }
+  panStart() {
+    console.log('on pan start ');
+  }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.categoryName = params['categoryName'];
@@ -28,7 +34,8 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
           'example',
           'description',
           1000,
-          ['logo_mobylis_ummmtg.jpg',
+          [
+            'logo_mobylis_ummmtg.jpg',
             'Photo_kbyuqw.jpg',
             'sample.jpg',
             '436810_exn0ex.jpg']
@@ -37,7 +44,8 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
           'example 3',
           'description 3',
           500,
-          ['sample.jpg',
+          [
+            'sample.jpg',
             '436810_exn0ex.jpg']
         ),
         new Product(
@@ -50,7 +58,8 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
           'exampleqdqdfsqdfqf 2',
           'description 2',
           5000,
-          ['Photo_kbyuqw.jpg',
+          [
+            'Photo_kbyuqw.jpg',
             'sample.jpg',
             '436810_exn0ex.jpg']
         )];
@@ -59,6 +68,9 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
   }
 
 
+  onVote() {
+    this.router.navigate(['/' + this.router.url.split('/')[1] + '/product']);
+  }
 
   ngOnDestroy() {
     this.sub.unsubscribe();

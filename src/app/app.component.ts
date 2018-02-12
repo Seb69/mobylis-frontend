@@ -9,4 +9,8 @@ export class AppComponent {
   title = 'app';
   formButtonXs = true;
 
+  ontap() {
+    console.log('tap start');
+  }
+
 }

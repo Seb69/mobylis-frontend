@@ -7,6 +7,7 @@ import {DeskComponent} from './desk/desk.component';
 import {PrestationComponent} from './prestation/prestation.component';
 import {ContactComponent} from './contact/contact.component';
 import {CarouselCardComponent} from './carousel-card/carousel-card.component';
+import {ProductDetailsComponent} from './product-details/product-details.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -15,6 +16,10 @@ const routes: Routes = [
       {
         path: '',
         component: SeatPageComponent
+      },
+      {
+        path: 'product',
+        component: ProductDetailsComponent
       },
       {
         path: ':categoryName',
@@ -27,6 +32,10 @@ const routes: Routes = [
       {
         path: '',
         component: AccessoryPageComponent
+      },
+      {
+        path: 'product',
+        component: ProductDetailsComponent
       },
       {
         path: ':categoryName',

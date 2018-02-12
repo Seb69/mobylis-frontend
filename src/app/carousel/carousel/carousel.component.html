@@ -7,12 +7,14 @@
          (panstart)="onPanStart()"
          (panend)="onPanEnd($event)"
          (panmove)="onPanMove($event)">
-      <div id="pagination">
+      <div id="pagination" >
         <div class="round-container" *ngFor="let slide of slideArray; let i = index">
           <div class="round-active round"
                [ngClass]="activeSlide === i ? 'round-active': 'round-empty'">
           </div>
         </div>
+      </div>
+      <div id="mobile-on-tap" (tap)="onTap($event)">
       </div>
       <div id="on-hover">
         <div id="left-arrow-container" class="arrow-container side-gradient">
@@ -37,7 +39,7 @@
           <div class="side-width" (tap)="onTap($event)"></div>
         </div>
 
-        <div style="background-color: red; width: 60%; height: 100%" (tap)="onTap($event)"></div>
+        <div id="middle-panel" (tap)="onTap($event)"></div>
 
         <div class="right-side-container side-container">
           <!-- Left side -->

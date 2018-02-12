@@ -9,6 +9,7 @@ export class Product {
 
   name: string;
   description: string;
+  brand: string;
   price: number;
   images: Array<string>;
 }

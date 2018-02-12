@@ -20,6 +20,8 @@ import {ContactComponent} from './contact/contact.component';
 import {CategoryComponent} from './category/category.component';
 import { ImageModule} from './image/image.module';
 import {CarouselCardModule} from './carousel-card/carousel-card.module';
+import {ProductDetailsComponent} from './product-details/product-details.component';
+import {CarouselModule} from './carousel/carousel.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import {CarouselCardModule} from './carousel-card/carousel-card.module';
     AccessoryPageComponent,
     TableComponent,
     DeskComponent,
+    ProductDetailsComponent,
     CategoryComponent,
     PrestationComponent,
     ContactComponent,
@@ -41,6 +44,7 @@ import {CarouselCardModule} from './carousel-card/carousel-card.module';
     AppRoutingModule,
     CoreModule,
     CarouselCardModule,
+    CarouselModule,
     ImageModule,
     RouterModule
   ],

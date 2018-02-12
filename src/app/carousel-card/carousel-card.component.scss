@@ -1,4 +1,5 @@
 @import '../../styles.scss';
+
 #category-name {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -7,6 +8,7 @@
   font-family: 'Reem Kufi', sans-serif;
   font-size: 3em;
 }
+
 #item-container {
 
   width: 100%;
@@ -23,7 +25,6 @@
   padding-bottom: 1em;
 
   cursor: pointer;
-
 }
 
 .item {

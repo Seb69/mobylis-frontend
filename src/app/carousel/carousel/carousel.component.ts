@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, NgZone, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
@@ -40,6 +40,9 @@ export class CarouselComponent implements OnInit {
   // Image of the carousel
   @Input() images: string[];
 
+  // Tell the parent that the user click on carousel
+  @Output() onVoted = new EventEmitter<string>();
+
   public calculatedRatio;
 
   constructor(private ref: ChangeDetectorRef, private zone: NgZone) {
@@ -63,6 +66,7 @@ export class CarouselComponent implements OnInit {
   }
 
   onPanStart(): void {
+    console.log('on pan start ');
     // Stop animation
     this.animation = false;
 
@@ -71,13 +75,13 @@ export class CarouselComponent implements OnInit {
     // If the user reach the last image => not increment loadImage
     // if (this.activeSlide === this.loadImage && this.activeSlide < this.slideCount - 1) {
     if (this.activeSlide === 0 && this.loadImage < 1) {
-      console.log('ON START MOVE ');
       this.loadImage += 1;
       // this.loadImageObservable.changeValue(this.loadImage);
     }
   }
 
   onPanEnd(event: any): void {
+    console.log('on pan end ');
 
     // Velocity Check : if the user make a quick move
     if (event.overallVelocityX > 1) {
@@ -103,9 +107,7 @@ export class CarouselComponent implements OnInit {
         }
       }
     }
-
   }
-
 
   // On pan move translate image
   onPanMove(event: any): void {
@@ -154,6 +156,7 @@ export class CarouselComponent implements OnInit {
 
   onTap(event: any) {
     console.log('on tap ');
+    this.onVoted.emit('on tap event');
   }
 
   moveLeft(event?: any) {
