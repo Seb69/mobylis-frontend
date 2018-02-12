@@ -19,12 +19,6 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private router: Router) {
   }
 
-  onTap() {
-    console.log('on tab');
-  }
-  panStart() {
-    console.log('on pan start ');
-  }
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.categoryName = params['categoryName'];
