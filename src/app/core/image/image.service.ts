@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 export class ImageService {
 
   // Supported image width to download
-  public supportedWidth: number[] = [64, 128, 192, 256, 320, 448, 512, 640, 768, 896, 1024, 1280, 1526, 2048, 2560, 4608, 5632];
+  public supportedWidth: number[] = [128, 192, 256, 320, 448, 512, 640, 896, 1024, 1280, 2048, 2560, 4608, 5632];
 
   // Global parameters
   private _projectId = 'dqismn81g';

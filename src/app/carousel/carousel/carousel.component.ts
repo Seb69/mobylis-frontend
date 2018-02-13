@@ -18,9 +18,6 @@ export class CarouselComponent implements OnInit {
   private _activeSlide = 0;
   public slidePosition = 0;
 
-  private startTime: number;
-  private endTime: number;
-
   // Lazy load
   public loadImage = 0;
 
@@ -76,7 +73,6 @@ export class CarouselComponent implements OnInit {
     // if (this.activeSlide === this.loadImage && this.activeSlide < this.slideCount - 1) {
     if (this.activeSlide === 0 && this.loadImage < 1) {
       this.loadImage += 1;
-      // this.loadImageObservable.changeValue(this.loadImage);
     }
   }
 

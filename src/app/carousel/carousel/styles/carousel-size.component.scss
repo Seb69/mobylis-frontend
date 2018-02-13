@@ -1,47 +1,45 @@
 @import '../../carousel.variable';
 @import '../../../../styles';
 
+.card-container {
+  padding-top: (($ratioHeight / $ratioWidth) * 100) +%;
+}
 /* X Small screens */
-@media all and (max-width: $xsmallBreakpoint){
+@media (max-width: $xsmallBreakpoint){
   /* We tell both sidebars to share a row */
   .card-container {
     width: $xsmallSize;
-    padding-top: (($ratioHeight / $ratioWidth) * 100 ) +%;
   }
 }
 
 /* Small screens */
-@media all and (min-width: $xsmallBreakpoint) and (max-width: $smallBreakpoint) {
+@media (min-width: $xsmallBreakpoint) and (max-width: $smallBreakpoint) {
   /* We tell both sidebars to share a row */
   .card-container {
     width: $smallSize;
-    padding-top: (($ratioHeight / $ratioWidth) * 100) +%;
   }
 }
 
 /* Medium screens */
-@media all and (min-width: $smallBreakpoint) and (max-width: $mediumBreakpoint) {
+@media (min-width: $smallBreakpoint) and (max-width: $mediumBreakpoint) {
   /* We tell both sidebars to share a row */
   .card-container {
     width: $mediumSize;
-    padding-top: (($ratioHeight / $ratioWidth)  * 100 ) +%;
   }
 }
 
 /* Large screens */
-@media all and (min-width: $mediumBreakpoint) and (max-width: $largeBreakpoint) {
+@media (min-width: $mediumBreakpoint) and (max-width: $largeBreakpoint) {
   /* We tell both sidebars to share a row */
   .card-container {
     width: $largeSize;
-    padding-top: (($ratioHeight / $ratioWidth)  * 100 ) +%;
   }
 }
 
 /* X Large screens */
-@media all and (min-width: $largeBreakpoint) {
+@media (min-width: $largeBreakpoint) {
   /* We tell both sidebars to share a row */
   .card-container {
     width: $xlargeSize;
-    padding-top: (($ratioHeight / $ratioWidth)  * 100) +%;
   }
 }
