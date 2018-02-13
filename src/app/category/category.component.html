@@ -1,0 +1,19 @@
+<div class="aspect-ratio">
+  <div class="category" *ngFor="let category of categories">
+    <div class="background-panel">
+    </div>
+    <div class="text-panel" [routerLink]="category.title">
+      <div>{{category.title}}</div>
+    </div>
+    <app-image
+      xsmallSize="90vw"
+      smallSize="30vw"
+      mediumSize="30vw"
+      largeSize="20vw"
+      xlargeSize="20vw"
+      [image]="category.image"
+      [lazyLoad]="false"
+      ratio="1:1"></app-image>
+  </div>
+</div>
+<router-outlet></router-outlet>
