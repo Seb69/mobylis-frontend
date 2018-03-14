@@ -8,8 +8,8 @@
     ],
     "redirects": [
       {
-        "source": "/api/test",
-        "destination": "http://localhost:8080/test",
+        "source": "/api/**",
+        "destination": "http://35.198.119.164/test",
         "type": 301
       }
     ],
