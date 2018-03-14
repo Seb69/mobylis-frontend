@@ -26,6 +26,8 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
       this.products = [
         new Product(
           'example',
+          '1',
+          'description',
           'description',
           1000,
           [
@@ -36,7 +38,9 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
         ),
         new Product(
           'example 3',
+          '2',
           'description 3',
+          'description',
           500,
           [
             'sample.jpg',
@@ -44,13 +48,17 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
         ),
         new Product(
           'example 4',
+          '3',
           'description 4',
+          'description',
           200,
           ['436810_exn0ex.jpg']
         ),
         new Product(
           'exampleqdqdfsqdfqf 2',
+          '4',
           'description 2',
+          'description',
           5000,
           [
             'Photo_kbyuqw.jpg',
@@ -62,8 +70,8 @@ export class CarouselCardComponent implements OnInit, OnDestroy {
   }
 
 
-  onVote() {
-    this.router.navigate(['/' + this.router.url.split('/')[1] + '/product']);
+  onTouch(id: string) {
+    this.router.navigate(['/product', id]);
   }
 
   ngOnDestroy() {

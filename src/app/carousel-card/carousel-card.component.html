@@ -1,7 +1,7 @@
 <div id="category-name">
   {{categoryName}}
 </div>
-<div id="item-container" >
+<div id="item-container">
   <div class="item" *ngFor="let product of products">
     <app-carousel ratio="3:2"
                   sizeUnit="vw"
@@ -11,9 +11,12 @@
                   [largeSize]="23"
                   [xlargeSize]="23"
                   [images]="product.images"
-                  (onVoted)="onVote($event)"
+                  [id]="product.id"
+                  (onTouch)="onTouch($event)"
     ></app-carousel>
-    <div class="item-description"> {{product.name}} </div>
-    <div class="item-price"> {{product.price | currency:'EUR':true:'0.0-1'}} </div>
+    <div (click)="onTouch(product.id)" id="product-details">
+      <div class="item-description"> {{product.name}}</div>
+      <div class="item-price"> {{product.price | currency:'EUR':true:'0.0-1'}}</div>
+    </div>
   </div>
 </div>

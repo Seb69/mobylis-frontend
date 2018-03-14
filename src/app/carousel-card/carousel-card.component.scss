@@ -8,12 +8,14 @@
   font-family: 'Reem Kufi', sans-serif;
   font-size: 3em;
 }
-
+#product-details{
+  width: 100%;
+  height: 100%;
+}
 #item-container {
 
   width: 100%;
   height: 100%;
-
 
   display: flex;
 
@@ -37,13 +39,13 @@
 
   transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
-  @media all and (max-width: $xsmallBreakpoint) {
+  @media all and (max-width: $xSmallBreakpoint) {
 
     margin-left: 2.5%;
     margin-right: 2.5%;
 
   }
-  @media all and (min-width: $xsmallBreakpoint) and (max-width: $smallBreakpoint) {
+  @media all and (min-width: $xSmallBreakpoint) and (max-width: $smallBreakpoint) {
 
     margin-left: 1%;
     margin-right: 1%;

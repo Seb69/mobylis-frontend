@@ -1,15 +1,15 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-carousel',
+  selector: 'app-product-carousel',
   styleUrls: [
     './styles/carousel.component.scss',
     './styles/carousel-size.component.scss',
     './styles/carousel-navigation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './carousel.component.html',
+  templateUrl: './carousel-product.component.html',
 })
-export class CarouselComponent implements OnInit {
+export class CarouselProductComponent implements OnInit {
 
   private _deltaX;
   public animation = false;
@@ -36,7 +36,6 @@ export class CarouselComponent implements OnInit {
 
   // Image of the carousel
   @Input() images: string[];
-  @Input() id: string;
 
   // Tell the parent that the user click on carousel
   @Output() onTouch = new EventEmitter<string>();
@@ -49,7 +48,6 @@ export class CarouselComponent implements OnInit {
   ngOnInit(): void {
     this.slideCount = this.images.length;
     this.slideArray = new Array(this.slideCount);
-
   }
 
   mouseHover() {
@@ -150,7 +148,7 @@ export class CarouselComponent implements OnInit {
   }
 
   onTap() {
-    this.onTouch.emit(this.id);
+    this.onTouch.emit();
   }
 
   moveLeft(event?: any) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from '../core/model/category';
+import {Category} from '../../core/model/category';
 
 @Component({
   selector: 'app-accessory-page',

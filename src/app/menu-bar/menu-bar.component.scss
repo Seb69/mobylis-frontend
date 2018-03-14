@@ -76,7 +76,7 @@
   justify-self: flex-end;
 }
 
-@media all and (max-width: $xsmallBreakpoint) {
+@media all and (max-width: $xSmallBreakpoint) {
 
   #menu-bar-container {
     flex-direction: column;
@@ -93,7 +93,7 @@
   }
 }
 
-@media all and (min-width: $xsmallBreakpoint) and (max-width: $smallBreakpoint) {
+@media all and (min-width: $xSmallBreakpoint) and (max-width: $smallBreakpoint) {
 
   .contact {
     border: 0 solid #e1e1e1;

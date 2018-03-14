@@ -1,0 +1,11 @@
+<img
+  [srcset]="sourceSet"
+  *ngIf="index <= loadImage"
+  draggable="false"
+  sizes="
+  (max-width: {{smallBreakpoint}}) {{xsmallSize}},
+  (max-width: {{mediumBreakpoint}}) {{smallSize}},
+  (max-width: {{largeBreakpoint}}) {{mediumSize}},
+  (max-width: {{xlargeBreakpoint}}) {{largeSize}},
+  {{xlargeSize}}"
+  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">

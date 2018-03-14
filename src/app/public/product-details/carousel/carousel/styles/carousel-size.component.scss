@@ -1,8 +1,9 @@
-@import '../../carousel.variable';
-@import '../../../../styles';
+@import '../../carousel-product.variable';
+@import '../../../../../../styles';
 
 .card-container {
   padding-top: (($ratioHeight / $ratioWidth) * 100) +%;
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1);
 }
 /* X Small screens */
 @media (max-width: $xSmallBreakpoint){
@@ -17,6 +18,7 @@
   /* We tell both sidebars to share a row */
   .card-container {
     width: $smallSize;
+    padding-top: (($ratioHeight / $ratioWidth) * 100 * 100/$smallSize) +%;
   }
 }
 

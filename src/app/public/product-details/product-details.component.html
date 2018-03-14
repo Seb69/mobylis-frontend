@@ -1,0 +1,22 @@
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <div class="product-container">
+    <app-product-carousel ratio="3:2"
+                  sizeUnit="vw"
+                  [xsmallSize]="95"
+                  [smallSize]="70"
+                  [mediumSize]="45"
+                  [largeSize]="45"
+                  [xlargeSize]="40"
+                  [images]="images">
+    </app-product-carousel>
+  </div>
+  <div class="product-panel">
+    <div class="product-details">
+      <h2>{{name}}</h2>
+      <p id="description" *ngIf="description">{{description}}</p>
+      <p id="brand" *ngIf="brand">Marque: {{brand}}</p>
+      <p id="dimension" *ngIf="dimension">Dimension: {{dimension}}</p>
+      <div id="price" *ngIf="description">{{price | number }} €</div>
+    </div>
+  </div>
+</div>

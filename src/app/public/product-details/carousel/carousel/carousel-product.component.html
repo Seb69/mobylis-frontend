@@ -69,7 +69,7 @@
       [style.transform]="'translateX(' + deltaX + 'px)'"
       [ngClass]="animation ? 'animation': null">
 
-      <app-responsive-image
+      <app-product-responsive-image
         *ngFor="let image of images;let i = index"
         [aspectRatio]="ratio"
         [xsmallSize]="xsmallSize + 'vw'"
@@ -79,7 +79,7 @@
         [xlargeSize]="xlargeSize + 'vw'"
         [index]="i"
         [loadImage]="loadImage"
-        [image]="image"></app-responsive-image>
+        [image]="image"></app-product-responsive-image>
 
     </div>
   </div>

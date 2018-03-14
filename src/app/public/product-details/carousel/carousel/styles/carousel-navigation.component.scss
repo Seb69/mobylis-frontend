@@ -1,0 +1,124 @@
+
+.pointer {
+  cursor: pointer;
+}
+
+// Show navigation element only when hover
+// Restrict to desktop only
+@media (hover: hover) {
+  .pan-container:hover #on-hover {
+    display: flex;
+  }
+}
+
+#on-hover {
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+#mobile-on-tap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.arrow-container {
+  width: 20%;
+  height: 100%;
+}
+
+#right-arrow-container {
+  position: absolute;
+  right: 0;
+
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.25),
+    rgba(255, 0, 0, 0));
+}
+
+#left-arrow-container {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.25),
+    rgba(255, 0, 0, 0));
+}
+
+.right-side-container {
+  right: 0;
+}
+
+.central-column {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: stretch;
+}
+
+.arrow-image-container {
+  height: 20%;
+}
+#middle-panel {
+  width: 60%;
+  height: 100%;
+}
+.side-container {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+
+  z-index: 3;
+
+  display: flex;
+  align-content: stretch;
+  justify-content: stretch;
+  flex-direction: row;
+}
+
+.arrow {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
+
+.side-width {
+  width: 25%;
+}
+
+.above-bellow {
+  height: 40%;
+}
+
+/**
+PAGINATION STYLING
+ */
+#pagination {
+  position: absolute;
+
+  align-self: flex-end;
+  padding-bottom: 0.4em;
+}
+
+.round-container {
+  display: inline-block
+}
+
+.round {
+  width: 0.6em;
+  height: 0.6em;
+
+  margin-right: 0.2em;
+  margin-left: 0.2em;
+
+  border-radius: 100%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+
+}
+
+.round-active {
+  background-color: white;
+}
+
+.round-empty {
+  background-color: black;
+  opacity: 0.3;
+}

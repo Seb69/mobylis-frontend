@@ -1,0 +1,89 @@
+@import '../../../styles.scss';
+
+.container {
+  display: flex;
+  margin-top: 2em;
+  justify-content: center;
+}
+
+.product-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-details {
+  font-family: 'Reem Kufi', sans-serif;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+.description {
+  line-break: auto;
+}
+.product-panel {
+  display: flex;
+  justify-content: inherit;
+}
+#price {
+  float: right;
+}
+h2 {
+  color: #7fa029;
+}
+
+.image-list-item {
+  flex-basis: 90%;
+}
+
+.image-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+@media all and (max-width: $xSmallBreakpoint) {
+  .container {
+    flex-direction: column;
+    margin-top: 1em;
+  }
+  .product-details {
+    flex-basis: 90%;
+  }
+}
+
+@media all and (min-width: $xSmallBreakpoint) and (max-width: $smallBreakpoint) {
+  .container {
+    flex-direction: column;
+    margin-top: 1em;
+  }
+  .product-details {
+    flex-basis: 70%;
+  }
+}
+
+@media all and (min-width: $smallBreakpoint) and (max-width: $mediumBreakpoint) {
+  .container {
+    margin-top: 6em;
+  }
+  .product-details {
+    width: 40vw;
+  }
+}
+
+@media all and (min-width: $mediumBreakpoint) and (max-width: $largeBreakpoint) {
+  .container {
+    margin-top: 6em;
+  }
+  .product-details {
+    width: 40vw;
+  }
+}
+
+@media all and (min-width: $largeBreakpoint) {
+  .container {
+    margin-top: 6em;
+  }
+  .product-details {
+    width: 40vw;
+  }
+}

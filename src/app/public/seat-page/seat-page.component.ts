@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ImageService} from '../core/image/image.service';
-import {Category} from '../core/model/category';
+import {ImageService} from '../../core/image/image.service';
+import {Category} from '../../core/model/category';
 
 @Component({
   selector: 'app-seat-page',

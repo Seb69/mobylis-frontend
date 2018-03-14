@@ -41,7 +41,7 @@
 
 
 /* X Small screens */
-@media all and (max-width: $xsmallBreakpoint) {
+@media all and (max-width: $xSmallBreakpoint) {
   /* We tell both sidebars to share a row */
   .aspect-ratio {
     flex-direction: column;
@@ -64,7 +64,7 @@
 }
 
 /* Small screens */
-@media all and (min-width: $xsmallBreakpoint) and (max-width: $smallBreakpoint) {
+@media all and (min-width: $xSmallBreakpoint) and (max-width: $smallBreakpoint) {
   /* We tell both sidebars to share a row */
   .category {
     width: 30vw;

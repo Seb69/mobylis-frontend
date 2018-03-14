@@ -1,51 +1,69 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HomePageComponent} from './home-page/home-page.component';
-import {AccessoryPageComponent} from './accessory-page/accessory-page.component';
-import {SeatPageComponent} from './seat-page/seat-page.component';
-import {DeskComponent} from './desk/desk.component';
-import {PrestationComponent} from './prestation/prestation.component';
-import {ContactComponent} from './contact/contact.component';
+import {HomePageComponent} from './public/home-page/home-page.component';
+import {AccessoryPageComponent} from './public/accessory-page/accessory-page.component';
+import {SeatPageComponent} from './public/seat-page/seat-page.component';
 import {CarouselCardComponent} from './carousel-card/carousel-card.component';
-import {ProductDetailsComponent} from './product-details/product-details.component';
+import {ProductDetailsComponent} from './public/product-details/product-details.component';
+import {AdminComponent} from './user/admin/admin.component';
+import {PrestationComponent} from './public/prestation-page/prestation.component';
+import {TableComponent} from './public/table-page/table.component';
+import {DeskComponent} from './public/desk-page/desk.component';
+import {ContactComponent} from './public/contact-page/contact.component';
+import {LoginPageComponent} from './user/login-page/login-page.component';
+import {AuthGuard} from './core/can-activate/AuthGuard';
 
 const routes: Routes = [
-  {path: '', component: HomePageComponent},
-  {path: 'siege',
+  {path: '', component: HomePageComponent,
     children: [
       {
-        path: '',
-        component: SeatPageComponent
+        path: 'siege',
+        children: [
+          {
+            path: '',
+            component: SeatPageComponent
+          },
+          {
+            path: ':categoryName',
+            component: CarouselCardComponent
+          }
+        ]
       },
       {
-        path: 'product',
+        path: 'accessoire',
+        children: [
+          {
+            path: '',
+            component: AccessoryPageComponent
+          },
+          {
+            path: ':categoryName',
+            component: CarouselCardComponent
+          }
+        ]
+      },
+      {path: 'table',
+        children: [
+          {
+            path: '',
+            component: TableComponent
+          },
+          {
+            path: ':categoryName',
+            component: CarouselCardComponent
+          }
+        ]},
+      {path: 'bureaux', component: DeskComponent},
+      {path: 'prestation', component: PrestationComponent},
+      {path: 'contact', component: ContactComponent},
+      {
+        path: 'product/:id',
         component: ProductDetailsComponent
-      },
-      {
-        path: ':categoryName',
-        component: CarouselCardComponent
       }
     ]},
   {path: 'carousel', component: CarouselCardComponent},
-  {path: 'accessoire',
-    children: [
-      {
-        path: '',
-        component: AccessoryPageComponent
-      },
-      {
-        path: 'product',
-        component: ProductDetailsComponent
-      },
-      {
-        path: ':categoryName',
-        component: CarouselCardComponent
-      }
-    ]},
-  {path: 'table', component: CarouselCardComponent},
-  {path: 'bureaux', component: DeskComponent},
-  {path: 'prestation', component: PrestationComponent},
-  {path: 'contact', component: ContactComponent}
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  {path: 'login', component: LoginPageComponent}
 ];
 
 @NgModule({
