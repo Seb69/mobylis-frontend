@@ -1,0 +1,48 @@
+<form [formGroup]="newProduct" (ngSubmit)="onSubmit()" class="form-container">
+  <div class="admin-page">
+    <h2 class="text">Ajouter un produit</h2>
+
+    <div>
+      <label><div class="text">Name: </div>
+        <input class="form-control" formControlName="name">
+      </label>
+    </div>
+    <div>
+      <label><div class="text">Marque (optionel): </div>
+        <input class="form-control" formControlName="brand">
+      </label>
+    </div>
+    <div>
+      <label><div class="text">Categorie: </div>
+        <select class="form-control" formControlName="category">
+          <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+        </select>
+      </label>
+    </div>
+    <br>
+    <div class="text">Choisissez les images (multiple selection possible) :</div>
+    <label>
+      <input type="file" (change)="selectFile($event)" multiple class="text">
+    </label>
+
+    <div style="float: left" class="image-container">
+    </div>
+    <div *ngFor="let file of uploadedFiles">
+      <app-admin-image [image]="file"></app-admin-image>
+      <div (click)="selectPrincipalImage(file)">
+        Image principale <input id="checkBox" type="checkbox">
+      </div>
+    </div>
+    <br>
+    <div class="text">Descritpion :</div>
+    <textarea rows="4" cols="50" name="comment" formControlName="description"></textarea>
+    <br>
+    <div class="text">Prix :</div>
+    <input type="number" formControlName="price">
+    <br>
+    <br>
+    <br>
+    <button type="submit" [disabled]="newProduct.status != 'VALID'">Ajouter</button>
+    <p>Form value: {{ newProduct.value | json }}</p>
+  </div>
+</form>

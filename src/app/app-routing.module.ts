@@ -56,10 +56,7 @@ const routes: Routes = [
       {path: 'bureaux', component: DeskComponent},
       {path: 'prestation', component: PrestationComponent},
       {path: 'contact', component: ContactComponent},
-      {
-        path: 'product/:id',
-        component: ProductDetailsComponent
-      }
+      {path: 'product/:id', component: ProductDetailsComponent}
     ]},
   {path: 'carousel', component: CarouselCardComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },

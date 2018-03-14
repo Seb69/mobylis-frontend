@@ -1,0 +1,15 @@
+<h2>Login to Mobylis.fr</h2>
+<div>
+  <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+    <div class="form-group login-content">
+      <label class="center-block">Username:
+        <input class="form-control" formControlName="username">
+      </label>
+      <label class="center-block" id="margin">Password:
+        <input class="form-control" formControlName="password" type="password">
+      </label>
+      <button type="submit" [disabled]="loginForm.status != 'VALID'" >Submit</button>
+    </div>
+  </form>
+</div>
+
