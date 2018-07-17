@@ -20,5 +20,27 @@
         "/assets/**"
       ]
     }
-  }]
+  }],
+  "dataGroups": [
+    {
+      "name": "google-font-api",
+      "urls": ["https://fonts.gstatic.com/**", "https://fonts.googleapis.com/**"],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 80,
+        "maxAge": "2d",
+        "timeout": "2s"
+      }
+    },
+    {
+      "name": "cloudinary-api",
+      "urls": ["https://res.cloudinary.com/**.jpg"],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 80,
+        "maxAge": "2d",
+        "timeout": "2s"
+      }
+    }
+  ]
 }
